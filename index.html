@@ -30,6 +30,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Manrope,system
 .search input:focus{box-shadow:0 0 0 3px var(--y)}
 .search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.sync-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding-bottom:14px}.sync-tools button{font:inherit;font-size:12px;font-weight:700;color:#e7e7e5;background:#1a1b1e;border:1px solid #34363b;border-radius:10px;padding:7px 11px;cursor:pointer}.sync-tools button:hover{border-color:var(--y);color:var(--y)}.sync-tools .sync-status{font-size:12px;color:#b9bbc0}.sync-tools input[type=file]{display:none}
 .chip{font:inherit;font-size:14px;font-weight:700;border:1px solid #34363b;background:#1a1b1e;color:#e7e7e5;border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer;transition:background .15s,border-color .15s}
 .chip:hover{border-color:#5a5c62}
 .chip[aria-pressed=true]{background:var(--y);color:#111;border-color:var(--y)}
@@ -158,6 +159,12 @@ details.sec>div{margin-top:14px}
     <button id="t-sticle" role="tab" aria-selected="false">Sticle confirmate</button>
     <button id="t-info" role="tab" aria-selected="false">Cum se citește</button>
   </nav>
+  <div class="sync-tools" aria-label="Transfer voturi">
+    <button type="button" id="export-votes">↓ Exportă voturile</button>
+    <button type="button" id="import-votes">↑ Importă voturi</button>
+    <input id="votes-file" type="file" accept=".json,application/json">
+    <span class="sync-status" id="votes-status" role="status" aria-live="polite">Voturile se transferă prin fișier JSON.</span>
+  </div>
 </header>
 <main id="main"><p class="hint">Se încarcă lista de modele…</p></main>
 <div id="tip"><div class="cvt">⚠ ECRAN CURBAT — doar sticlă 3D / UV</div><div class="st"><img alt=""></div><b></b><small></small><div class="cl"></div></div>
@@ -183,11 +190,12 @@ const name=m=>m[0]+' '+m[1];
 const short=m=>m[1].split(' / ')[0];
 const key=m=>norm(name(m)).replace(/ /g,'');
 let DBX=null,UID=null,CANW=null,TI={},TC={};
-const LOCAL_VOTE_KEY='magnet.probe.v1';
-let LOCAL_VOTES=[];
-try{LOCAL_VOTES=JSON.parse(localStorage.getItem(LOCAL_VOTE_KEY)||'[]')}catch(e){}
+const LOCAL_VOTE_KEY='magnet.probe.v1',LOCAL_VOTER_KEY='magnet.voter.v1';
+const makeVoterId=()=>`v-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+let LOCAL_ID=makeVoterId(),LOCAL_VOTES=[];
+try{LOCAL_ID=localStorage.getItem(LOCAL_VOTER_KEY)||LOCAL_ID;localStorage.setItem(LOCAL_VOTER_KEY,LOCAL_ID);const saved=JSON.parse(localStorage.getItem(LOCAL_VOTE_KEY)||'[]');LOCAL_VOTES=Array.isArray(saved)?saved:[];for(const x of LOCAL_VOTES)if(!x.by)x.by=LOCAL_ID}catch(e){}
 const tkey=(a,b)=>Math.min(a,b)+'_'+Math.max(a,b);
-function refreshVotes(){TI={};TC={};for(const x of LOCAL_VOTES){if(!D[x.a]||!D[x.b])continue;const k=tkey(x.a,x.b),c=TC[k]||(TC[k]={ok:0,no:0,mine:null});c[x.ok?'ok':'no']++;c.mine=!!x.ok;const v=x.ok?'ok':'no';(TI[x.a]||(TI[x.a]=new Map())).set(x.b,v);(TI[x.b]||(TI[x.b]=new Map())).set(x.a,v)}}
+function refreshVotes(){TI={};TC={};for(const x of LOCAL_VOTES){if(!D[x.a]||!D[x.b])continue;const k=tkey(x.a,x.b),c=TC[k]||(TC[k]={ok:0,no:0,mine:null});c[x.ok?'ok':'no']++;if(x.by===LOCAL_ID)c.mine=!!x.ok}for(const k in TC){const c=TC[k],v=c.ok>c.no?'ok':c.no>c.ok?'no':null;if(!v)continue;const [a,b]=k.split('_').map(Number);(TI[a]||(TI[a]=new Map())).set(b,v);(TI[b]||(TI[b]=new Map())).set(a,v)}}
 const lv=(m,l)=>{const t=TI[m.ix];let r=m[10].filter(x=>x[1]===l&&!(t&&(t.get(x[0])==='no'||(l!=='C'&&t.get(x[0])==='ok'))));if(l==='C'&&t)for(const [j,v] of t)if(v==='ok'&&!m[10].some(x=>x[0]===j&&x[1]==='C'))r.push([j,'C']);return r};
 const lvNo=m=>{const t=TI[m.ix];return t?[...t].filter(x=>x[1]==='no').map(x=>[x[0],'N']):[]};
 const sugg=m=>(m[13]||[]).filter(x=>!(TI[m.ix]&&TI[m.ix].has(x[0])));
@@ -270,6 +278,7 @@ $('#brands').innerHTML=BR.map(b=>`<button class="chip" aria-pressed="${b==='Toat
 $('#brands').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;brand=b.dataset.b;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));limit=60;if(tab==='info')setTab('cauta');else render()});
 q.addEventListener('input',()=>{limit=60;if(location.hash)history.replaceState(null,'',' ');if(tab==='info')setTab('cauta');else render()});
 $('#t-cauta').onclick=()=>setTab('cauta');$('#t-noi').onclick=()=>setTab('noi');$('#t-sticle').onclick=()=>setTab('sticle');$('#t-info').onclick=()=>setTab('info');
+$('#export-votes').onclick=exportVotes;$('#import-votes').onclick=()=>$('#votes-file').click();$('#votes-file').addEventListener('change',async e=>{const f=e.target.files?.[0];if(f)await importVotes(f);e.target.value=''})
 main.addEventListener('click',e=>{const vb=e.target.closest('.vb');if(vb){vote(vb);return}if(e.target.id==='back'){history.replaceState(null,'',' ');tab='cauta';setTabUI('cauta');renderSearch();return}if(e.target.id==='more'){limit+=120;render();return}const r=e.target.closest('[data-i]');if(r){hideTip();tab='cauta';setTabUI('cauta');renderDetail(+r.dataset.i)}});
 const tip=$('#tip'),tipImg=tip.querySelector('img'),tipB=tip.querySelector('b'),tipS=tip.querySelector('small'),tipL=tip.querySelector('.cl');
 function compatTxt(m){const nm=a=>a.slice(0,8).map(x=>esc(D[x[0]][0]+' '+short(D[x[0]]))).join(', ')+(a.length>8?` +${a.length-8}`:'');const C=lv(m,'C'),P=lv(m,'P');if(C.length)return `<i class="c">✓ Aceeași sticlă (${C.length}):</i>${nm(C)}`;if(P.length)return `<i class="p">Probabil (${P.length}):</i>${nm(P)}`;if(m[15])return `<i class="c">✓ Sticlă proprie — doar pentru acest model</i>`;if(sugg(m).length)return `<i class="p">Cel mai apropiat de probat:</i>${nm(sugg(m))}`;return '<i>Sticlă dedicată — fără pereche</i>'}
@@ -282,7 +291,10 @@ function rerender(){if(location.hash.startsWith('#m')&&CUR>=0){const y=scrollY;r
 function initDB(){refreshVotes()}
 const sid=x=>String(x).replace(/[^A-Za-z0-9_\-.~:@+]/g,'-').slice(0,80);
 async function vote(btn){if(btn.id==='pr1'||btn.id==='pr0'){const v=$('#prm').value.trim().toLowerCase();const j=D.findIndex(x=>name(x).toLowerCase()===v);if(j<0||j===CUR){$('#prmsg').textContent='Alege un model din listă.';return}return doVote(CUR,j,btn.id==='pr1')}return doVote(+btn.dataset.a,+btn.dataset.b,btn.dataset.v==='1')}
-async function doVote(a,b,ok){const i=LOCAL_VOTES.findIndex(x=>tkey(x.a,x.b)===tkey(a,b));if(i>=0&&LOCAL_VOTES[i].ok===ok)LOCAL_VOTES.splice(i,1);else{if(i>=0)LOCAL_VOTES.splice(i,1);LOCAL_VOTES.push({a:Math.min(a,b),b:Math.max(a,b),ok,at:new Date().toISOString()})}try{localStorage.setItem(LOCAL_VOTE_KEY,JSON.stringify(LOCAL_VOTES))}catch(e){}refreshVotes();rerender()}
+async function doVote(a,b,ok){a=Math.min(a,b);b=Math.max(a,b);const i=LOCAL_VOTES.findIndex(x=>x.a===a&&x.b===b&&x.by===LOCAL_ID);if(i>=0&&LOCAL_VOTES[i].ok===ok)LOCAL_VOTES.splice(i,1);else{const vote={a,b,ok,by:LOCAL_ID,at:new Date().toISOString()};if(i>=0)LOCAL_VOTES[i]=vote;else LOCAL_VOTES.push(vote)}saveLocalVotes();refreshVotes();rerender()}
+function saveLocalVotes(){try{localStorage.setItem(LOCAL_VOTE_KEY,JSON.stringify(LOCAL_VOTES))}catch(e){}}
+function exportVotes(){const votes=LOCAL_VOTES.filter(x=>D[x.a]&&D[x.b]).map(x=>({modelA:name(D[x.a]),modelB:name(D[x.b]),ok:!!x.ok,by:x.by||LOCAL_ID,at:x.at||new Date().toISOString()}));const pack={format:'magnet-probe-v1',exportedAt:new Date().toISOString(),votes};const blob=new Blob([JSON.stringify(pack,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`magnet-voturi-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#votes-status').textContent=`Exportate ${votes.length} voturi.`}
+async function importVotes(file){const status=$('#votes-status');try{if(file.size>5*1024*1024)throw new Error('Fișierul depășește 5 MB.');const pack=JSON.parse(await file.text());if(pack.format!=='magnet-probe-v1'||!Array.isArray(pack.votes))throw new Error('Format JSON Magnet necunoscut.');if(pack.votes.length>50000)throw new Error('Fișierul conține prea multe voturi.');let added=0,updated=0,skipped=0;for(const v of pack.votes){if(typeof v.modelA!=='string'||typeof v.modelB!=='string'||typeof v.ok!=='boolean'||typeof v.by!=='string'||v.by.length>100){skipped++;continue}const a=D.findIndex(m=>name(m)===v.modelA),b=D.findIndex(m=>name(m)===v.modelB),when=Date.parse(v.at);if(a<0||b<0||a===b||!Number.isFinite(when)){skipped++;continue}const lo=Math.min(a,b),hi=Math.max(a,b),id=`${lo}_${hi}_${v.by}`,i=LOCAL_VOTES.findIndex(x=>`${Math.min(x.a,x.b)}_${Math.max(x.a,x.b)}_${x.by||LOCAL_ID}`===id),item={a:lo,b:hi,ok:v.ok,by:v.by,at:new Date(when).toISOString()};if(i<0){LOCAL_VOTES.push(item);added++}else if(Date.parse(LOCAL_VOTES[i].at||0)<when){LOCAL_VOTES[i]=item;updated++}}saveLocalVotes();refreshVotes();rerender();status.textContent=`Importate ${added} voturi noi, actualizate ${updated}; ignorate ${skipped}.`}catch(e){status.textContent=e.message||'Nu am putut citi fișierul JSON.'}}
 function fromHash(){const h=location.hash.slice(1);if(/^m\d+$/.test(h)&&D[+h.slice(1)]){tab='cauta';renderDetail(+h.slice(1),false)}else render()}
 addEventListener('hashchange',fromHash);
 const d=EMBEDDED_DATA;D=d.m;D.forEach((m,i)=>m.ix=i);initDB();SRC=d.src;const seen={};GL=[];for(const g of d.g){const k=g[1].join(',');if(seen[k]){seen[k][2]++;continue}const x=[g[0],g[1],0];seen[k]=x;GL.push(x)};fromHash();q.focus();
