@@ -287,6 +287,7 @@ async function vote(btn){if(btn.id==='pr1'||btn.id==='pr0'){const v=$('#prm').va
 async function doVote(a,b,ok){a=Math.min(a,b);b=Math.max(a,b);const i=LOCAL_VOTES.findIndex(x=>x.a===a&&x.b===b&&x.by===LOCAL_ID);if(i>=0&&LOCAL_VOTES[i].ok===ok)LOCAL_VOTES.splice(i,1);else{const vote={a,b,ok,by:LOCAL_ID,at:new Date().toISOString()};if(i>=0)LOCAL_VOTES[i]=vote;else LOCAL_VOTES.push(vote)}saveLocalVotes();refreshVotes();rerender()}
 function saveLocalVotes(){try{localStorage.setItem(LOCAL_VOTE_KEY,JSON.stringify(LOCAL_VOTES))}catch(e){}}
 D=EMBEDDED_DATA.m;D.forEach((m,i)=>m.ix=i);SRC=EMBEDDED_DATA.src||{};{const seen={};GL=[];for(const g of EMBEDDED_DATA.g||[]){const k=g[1].join(',');if(seen[k]){seen[k][2]++;continue}const x=[g[0],g[1],0];seen[k]=x;GL.push(x)}}initDB();render();
+}
 </script>
 </body>
 </html>
