@@ -30,7 +30,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Manrope,system
 .search input:focus{box-shadow:0 0 0 3px var(--y)}
 .search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
-.sync-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding-bottom:14px}.sync-tools button{font:inherit;font-size:12px;font-weight:700;color:#e7e7e5;background:#1a1b1e;border:1px solid #34363b;border-radius:10px;padding:7px 11px;cursor:pointer}.sync-tools button:hover{border-color:var(--y);color:var(--y)}.sync-tools .sync-status{font-size:12px;color:#b9bbc0}.sync-tools input[type=file]{display:none}
 .chip{font:inherit;font-size:14px;font-weight:700;border:1px solid #34363b;background:#1a1b1e;color:#e7e7e5;border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer;transition:background .15s,border-color .15s}
 .chip:hover{border-color:#5a5c62}
 .chip[aria-pressed=true]{background:var(--y);color:#111;border-color:var(--y)}
@@ -47,7 +46,7 @@ main{padding:26px max(4vw,16px) 56px;max-width:1240px;margin:0 auto}
 .row b{display:block;font-size:16px;line-height:1.25;font-weight:700}
 .row small{color:var(--mut);font-size:13px;display:block;margin-top:2px}
 .pill{margin-left:auto;flex:none;font-weight:800;font-size:12px;padding:5px 10px;border-radius:999px;white-space:nowrap}
-.pill.c{background:var(--okbg);color:var(--ok)}.pill.p{background:var(--warnbg);color:var(--warn)}.pill.z{background:var(--card2);color:var(--mut);border:1px solid var(--line)}
+.pill.c{background:var(--okbg);color:var(--ok)}.pill.p{background:var(--warnbg);color:var(--warn)}.pill.z{background:var(--card2);color:var(--mut);border:1px solid var(--line)}.pill.n{background:#fdecec;color:#b42318;border:1px solid #f2b8b5}
 .back{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:9px 14px;min-height:44px;cursor:pointer;margin-bottom:18px;box-shadow:var(--sh)}
 .sheet{background:var(--card);border-radius:26px;box-shadow:var(--sh2);display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);overflow:hidden;margin-bottom:26px}
 .stage{background:radial-gradient(120% 80% at 50% 25%,#ffffff 0%,#efede7 70%,#e4e1d9 100%);display:grid;place-items:center;padding:28px 20px;position:relative}
@@ -62,7 +61,7 @@ main{padding:26px max(4vw,16px) 56px;max-width:1240px;margin:0 auto}
 .verdict .ic{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:18px}
 .verdict.c{background:var(--okbg);color:var(--ok)}.verdict.c .ic{background:var(--ok);color:#fff}
 .verdict.p{background:var(--warnbg);color:var(--warn)}.verdict.p .ic{background:var(--warn);color:#fff}
-.verdict.z{background:var(--card2);color:var(--ink);border:1px solid var(--line)}.verdict.z .ic{background:var(--ink);color:var(--card)}
+.verdict.z{background:var(--card2);color:var(--ink);border:1px solid var(--line)}.verdict.z .ic{background:var(--ink);color:var(--card)}.verdict.n{background:#fdecec;color:#b42318;border:1px solid #f2b8b5}.verdict.n .ic{background:#c62828;color:#fff}
 .cmp{margin-top:18px}
 .cmp h4{margin:0 0 10px;font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.03em}
 .cut{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
@@ -106,7 +105,7 @@ details.sec>div{margin-top:14px}
 .spec small{color:var(--mut);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;margin-right:3px}.spec.cam{background:var(--ink);color:var(--card);border-color:var(--ink)}.spec.cam small{color:#b9bbc0}.spec.cam i{font-style:normal;color:var(--y);margin-right:5px}
 .spec.cv{background:#d92d20;border-color:#d92d20;color:#fff;font-weight:800}.spec.cv small{color:#ffd9d6}.cvt{display:none;background:#d92d20;color:#fff;font-weight:800;font-size:12.5px;text-align:center;padding:7px 8px;border-radius:12px;margin-bottom:8px;letter-spacing:.01em}#tip.cv .cvt{display:block}#tip.cv{box-shadow:0 0 0 3px #d92d20,0 24px 60px rgba(0,0,0,.32)}.cvb{display:inline-block;background:#d92d20;color:#fff;font-weight:800;font-size:11px;padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}.spec.mk{background:#fff4d6;border-color:#f0c64a}
 .steps{margin:6px 0 0;padding-left:22px;line-height:1.55}.steps li{margin:10px 0}.steps .gal{margin-top:10px}.sec.todo{border:1px dashed #e2b500;background:#fffbea;border-radius:22px;padding:18px 20px}
-#tip .cl{font-size:11.5px;line-height:1.4;color:#333;margin-top:8px;border-top:1px solid #eee;padding-top:7px}#tip .cl i{font-style:normal;font-weight:800;display:block;margin-bottom:2px}#tip .cl i.c{color:#1a7f37}#tip .cl i.p{color:#9a6700}
+#tip .cl{font-size:11.5px;line-height:1.4;color:#333;margin-top:8px;border-top:1px solid #eee;padding-top:7px}#tip .cl i{font-style:normal;font-weight:800;display:block;margin-bottom:2px}#tip .cl i.c{color:#1a7f37}#tip .cl i.p{color:#9a6700}#tip .cl i.n{color:#c62828}
 
 #tip .st{background:radial-gradient(120% 90% at 50% 20%,#fff,#eeece6);border-radius:14px;padding:10px 0;display:grid;place-items:center}
 #tip img{display:block;width:128px;height:270px;object-fit:contain;mix-blend-mode:multiply}
@@ -159,12 +158,6 @@ details.sec>div{margin-top:14px}
     <button id="t-sticle" role="tab" aria-selected="false">Sticle confirmate</button>
     <button id="t-info" role="tab" aria-selected="false">Cum se citește</button>
   </nav>
-  <div class="sync-tools" aria-label="Transfer voturi">
-    <button type="button" id="export-votes">↓ Exportă voturile</button>
-    <button type="button" id="import-votes">↑ Importă voturi</button>
-    <input id="votes-file" type="file" accept=".json,application/json">
-    <span class="sync-status" id="votes-status" role="status" aria-live="polite">Voturile se transferă prin fișier JSON.</span>
-  </div>
 </header>
 <main id="main"><p class="hint">Se încarcă lista de modele…</p></main>
 <div id="tip"><div class="cvt">⚠ ECRAN CURBAT — doar sticlă 3D / UV</div><div class="st"><img alt=""></div><b></b><small></small><div class="cl"></div></div>
@@ -204,7 +197,7 @@ const cw=(i,j,html)=>`<div class="cw">${html}${vbar(i,j)}</div>`;
 const src=(a,b)=>SRC[Math.min(a,b)+','+Math.max(a,b)]||[];
 const sub=m=>[m[14]&&m[14]!=='Global'?MK[m[14]]:'',m[3]?m[3]+'"':'', (camIco[m[6]]||m[6])+(m[3]?'':' (estimat)'), m[2]||'din catalog Mietubl'].filter(Boolean).join(' · ');
 function score(m,toks){const k=key(m),n=' '+norm(name(m))+' ';let s=0;for(const t of toks){const i=k.indexOf(t);if(i<0)return -1;s+=(n.includes(' '+t+' ')?4:n.includes(' '+t)?3:1)}const q=toks.join('');const parts=m[1].split(' / ').map(p=>norm(m[0]+' '+p).replace(/ /g,''));if(parts.some(p=>p===q||p.endsWith(q)||p.replace(/[45]g$/,'').endsWith(q)))s+=10;return s-m[1].length/400}
-function pill(m){const c=lv(m,'C').length,p=lv(m,'P').length;return !c&&m[15]?`<span class="pill c">sticlă proprie ✓</span>`:c?`<span class="pill c">✓ ${c} confirmat${c>1?'e':''}</span>`:p?`<span class="pill p">${p} de verificat</span>`:`<span class="pill z">sticlă proprie</span>`}
+function pill(m){const c=lv(m,'C').length,p=lv(m,'P').length;return c?`<span class="pill c">✓ ${c} confirmat${c>1?'e':''}</span>`:p?`<span class="pill p">${p} de verificat</span>`:`<span class="pill n">Fără alternativă</span>`}
 function row(i){const m=D[i];return `<button class="row" data-i="${i}" data-tip="${i}"><span class="pic"><img src="${PX}" data-id="${m[7]}" alt=""></span><span><b>${esc(name(m))}</b>${m[16]==='curbat'?'<span class="cvb">CURBAT</span>':''}<small>${esc(sub(m))}</small></span>${pill(m)}</button>`}
 function card(i,badge,why,cls,when){const m=D[i];cls=cls||(badge.includes('Confirmat')||badge.startsWith('✓')?'b-c':badge==='Probabil'||badge==='De verificat'?'b-p':'b-z');return `<button class="card" data-i="${i}" data-tip="${i}"><span class="ph"><span class="badge ${cls}">${badge}</span><img src="${PX}" data-id="${m[7]}" alt=""></span><span class="tx"><span class="badge ${cls} tb">${badge}</span><b>${esc(m[0]+' '+short(m))}</b>${m[16]==='curbat'?'<span class="cvb">CURBAT</span>':''}<small>${esc(sub(m))}</small>${why?`<span class="why">${esc(why)}</span>`:''}${when?`<span class="when">Lansat: ${esc(when)}</span>`:''}</span></button>`}
 function renderSearch(){
@@ -218,7 +211,7 @@ function renderDetail(i,push=true,noScroll=false){CUR=i;main.className='det';
   const m=D[i],C=lv(m,'C'),P=lv(m,'P'),T=lv(m,'T');
   if(push)location.hash='m'+i;
   const near=[...C,...P].map(x=>x[0]);
-  const v=C.length?`<div class="verdict c"><span class="ic">✓</span>Aceeași sticlă — confirmat la ${C.length} ${C.length===1?'model':'modele'}</div>`:P.length?`<div class="verdict p"><span class="ic">!</span>Nicio pereche confirmată încă · ${P.length} posibile, de verificat</div>`:(m[15]?`<div class="verdict c"><span class="ic">1</span>Sticlă proprie — se vinde doar pentru acest model (${m[15]} ${m[15]>1?'producători':'producător'})</div>`:sugg(m).length?`<div class="verdict p"><span class="ic">!</span>Nicio pereche confirmată — vezi mai jos ce poți face</div>`:`<div class="verdict z"><span class="ic">1</span>Sticlă dedicată — nu are pereche</div>`);
+  const v=C.length?`<div class="verdict c"><span class="ic">✓</span>Aceeași sticlă — confirmat la ${C.length} ${C.length===1?'model':'modele'}</div>`:P.length?`<div class="verdict p"><span class="ic">!</span>${P.length} alternative probabile — verifică înainte de aplicare</div>`:m[15]?`<div class="verdict n"><span class="ic">!</span>Fără alternativă comună — sticlă dedicată acestui model</div>`:sugg(m).length?`<div class="verdict n"><span class="ic">!</span>Fără alternativă confirmată — modelele apropiate de mai jos sunt doar de probat</div>`:`<div class="verdict n"><span class="ic">!</span>Fără alternativă compatibilă cunoscută</div>`;
   main.innerHTML=`<button class="back" id="back">← Înapoi la căutare</button>
   <article class="sheet"><div class="stage"><img src="${PX}" data-id="${m[7]}" alt="${esc(name(m))}"></div>
    <div class="info"><div class="brandtag">${esc(m[0].toUpperCase())}</div><h2>${esc(m[1])}</h2>
@@ -278,10 +271,10 @@ $('#brands').innerHTML=BR.map(b=>`<button class="chip" aria-pressed="${b==='Toat
 $('#brands').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;brand=b.dataset.b;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));limit=60;if(tab==='info')setTab('cauta');else render()});
 q.addEventListener('input',()=>{limit=60;if(location.hash)history.replaceState(null,'',' ');if(tab==='info')setTab('cauta');else render()});
 $('#t-cauta').onclick=()=>setTab('cauta');$('#t-noi').onclick=()=>setTab('noi');$('#t-sticle').onclick=()=>setTab('sticle');$('#t-info').onclick=()=>setTab('info');
-$('#export-votes').onclick=exportVotes;$('#import-votes').onclick=()=>$('#votes-file').click();$('#votes-file').addEventListener('change',async e=>{const f=e.target.files?.[0];if(f)await importVotes(f);e.target.value=''})
+
 main.addEventListener('click',e=>{const vb=e.target.closest('.vb');if(vb){vote(vb);return}if(e.target.id==='back'){history.replaceState(null,'',' ');tab='cauta';setTabUI('cauta');renderSearch();return}if(e.target.id==='more'){limit+=120;render();return}const r=e.target.closest('[data-i]');if(r){hideTip();tab='cauta';setTabUI('cauta');renderDetail(+r.dataset.i)}});
 const tip=$('#tip'),tipImg=tip.querySelector('img'),tipB=tip.querySelector('b'),tipS=tip.querySelector('small'),tipL=tip.querySelector('.cl');
-function compatTxt(m){const nm=a=>a.slice(0,8).map(x=>esc(D[x[0]][0]+' '+short(D[x[0]]))).join(', ')+(a.length>8?` +${a.length-8}`:'');const C=lv(m,'C'),P=lv(m,'P');if(C.length)return `<i class="c">✓ Aceeași sticlă (${C.length}):</i>${nm(C)}`;if(P.length)return `<i class="p">Probabil (${P.length}):</i>${nm(P)}`;if(m[15])return `<i class="c">✓ Sticlă proprie — doar pentru acest model</i>`;if(sugg(m).length)return `<i class="p">Cel mai apropiat de probat:</i>${nm(sugg(m))}`;return '<i>Sticlă dedicată — fără pereche</i>'}
+function compatTxt(m){const nm=a=>a.slice(0,8).map(x=>esc(D[x[0]][0]+' '+short(D[x[0]]))).join(', ')+(a.length>8?` +${a.length-8}`:'');const C=lv(m,'C'),P=lv(m,'P');if(C.length)return `<i class="c">✓ Aceeași sticlă (${C.length}):</i>${nm(C)}`;if(P.length)return `<i class="p">Probabil (${P.length}):</i>${nm(P)}`;if(m[15])return `<i class="n">⚠ Fără alternativă comună — sticlă dedicată</i>`;if(sugg(m).length)return `<i class="n">⚠ Fără alternativă confirmată</i><i>Cel mai apropiat de probat:</i>${nm(sugg(m))}`;return '<i class="n">⚠ Fără alternativă compatibilă cunoscută</i>'}
 function hideTip(){tip.classList.remove('on');tip.style.display='none'}
 main.addEventListener('mouseover',e=>{const r=e.target.closest('[data-tip]');if(!r||!matchMedia('(hover:hover)').matches)return;const m=D[+r.dataset.tip];tip.classList.toggle('cv',m[16]==='curbat');tipB.innerHTML=esc(name(m))+(m[16]==='curbat'?'<span class="cvb">CURBAT</span>':'');tipS.textContent=sub(m);tipL.innerHTML=compatTxt(m);tipImg.src=PX;getImg(m[7]).then(u=>{tipImg.src=u});tip.style.display='block';requestAnimationFrame(()=>tip.classList.add('on'))});
 main.addEventListener('mousemove',e=>{if(tip.style.display!=='block')return;const w=tip.offsetWidth,h=tip.offsetHeight;const x=e.clientX+28+w>innerWidth?e.clientX-28-w:e.clientX+28;const y=Math.min(Math.max(8,e.clientY-h/2),innerHeight-h-8);tip.style.left=x+'px';tip.style.top=y+'px'});
@@ -293,12 +286,6 @@ const sid=x=>String(x).replace(/[^A-Za-z0-9_\-.~:@+]/g,'-').slice(0,80);
 async function vote(btn){if(btn.id==='pr1'||btn.id==='pr0'){const v=$('#prm').value.trim().toLowerCase();const j=D.findIndex(x=>name(x).toLowerCase()===v);if(j<0||j===CUR){$('#prmsg').textContent='Alege un model din listă.';return}return doVote(CUR,j,btn.id==='pr1')}return doVote(+btn.dataset.a,+btn.dataset.b,btn.dataset.v==='1')}
 async function doVote(a,b,ok){a=Math.min(a,b);b=Math.max(a,b);const i=LOCAL_VOTES.findIndex(x=>x.a===a&&x.b===b&&x.by===LOCAL_ID);if(i>=0&&LOCAL_VOTES[i].ok===ok)LOCAL_VOTES.splice(i,1);else{const vote={a,b,ok,by:LOCAL_ID,at:new Date().toISOString()};if(i>=0)LOCAL_VOTES[i]=vote;else LOCAL_VOTES.push(vote)}saveLocalVotes();refreshVotes();rerender()}
 function saveLocalVotes(){try{localStorage.setItem(LOCAL_VOTE_KEY,JSON.stringify(LOCAL_VOTES))}catch(e){}}
-function exportVotes(){const votes=LOCAL_VOTES.filter(x=>D[x.a]&&D[x.b]).map(x=>({modelA:name(D[x.a]),modelB:name(D[x.b]),ok:!!x.ok,by:x.by||LOCAL_ID,at:x.at||new Date().toISOString()}));const pack={format:'magnet-probe-v1',exportedAt:new Date().toISOString(),votes};const blob=new Blob([JSON.stringify(pack,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`magnet-voturi-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#votes-status').textContent=`Exportate ${votes.length} voturi.`}
-async function importVotes(file){const status=$('#votes-status');try{if(file.size>5*1024*1024)throw new Error('Fișierul depășește 5 MB.');const pack=JSON.parse(await file.text());if(pack.format!=='magnet-probe-v1'||!Array.isArray(pack.votes))throw new Error('Format JSON Magnet necunoscut.');if(pack.votes.length>50000)throw new Error('Fișierul conține prea multe voturi.');let added=0,updated=0,skipped=0;for(const v of pack.votes){if(typeof v.modelA!=='string'||typeof v.modelB!=='string'||typeof v.ok!=='boolean'||typeof v.by!=='string'||v.by.length>100){skipped++;continue}const a=D.findIndex(m=>name(m)===v.modelA),b=D.findIndex(m=>name(m)===v.modelB),when=Date.parse(v.at);if(a<0||b<0||a===b||!Number.isFinite(when)){skipped++;continue}const lo=Math.min(a,b),hi=Math.max(a,b),id=`${lo}_${hi}_${v.by}`,i=LOCAL_VOTES.findIndex(x=>`${Math.min(x.a,x.b)}_${Math.max(x.a,x.b)}_${x.by||LOCAL_ID}`===id),item={a:lo,b:hi,ok:v.ok,by:v.by,at:new Date(when).toISOString()};if(i<0){LOCAL_VOTES.push(item);added++}else if(Date.parse(LOCAL_VOTES[i].at||0)<when){LOCAL_VOTES[i]=item;updated++}}saveLocalVotes();refreshVotes();rerender();status.textContent=`Importate ${added} voturi noi, actualizate ${updated}; ignorate ${skipped}.`}catch(e){status.textContent=e.message||'Nu am putut citi fișierul JSON.'}}
-function fromHash(){const h=location.hash.slice(1);if(/^m\d+$/.test(h)&&D[+h.slice(1)]){tab='cauta';renderDetail(+h.slice(1),false)}else render()}
-addEventListener('hashchange',fromHash);
-const d=EMBEDDED_DATA;D=d.m;D.forEach((m,i)=>m.ix=i);initDB();SRC=d.src;const seen={};GL=[];for(const g of d.g){const k=g[1].join(',');if(seen[k]){seen[k][2]++;continue}const x=[g[0],g[1],0];seen[k]=x;GL.push(x)};fromHash();q.focus();
-}
 </script>
 </body>
 </html>
