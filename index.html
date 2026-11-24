@@ -19,21 +19,21 @@
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Manrope,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
-.hero{background:var(--dark);color:#f4f4f2;padding:22px max(4vw,16px) 0}
-.brandline{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:.02em}
+.hero{background:var(--dark);color:#f4f4f2;padding:22px max(4vw,16px) 0;text-align:center}
+.brandline{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:.02em}
 .logo{width:28px;height:28px;border-radius:8px;background:var(--y);display:grid;place-items:center;color:#111;font-weight:800}
-.hero h1{margin:14px 0 4px;font-size:clamp(26px,4.4vw,40px);line-height:1.08;font-weight:800;text-wrap:balance;max-width:20ch}
+.hero h1{margin:14px auto 4px;font-size:clamp(26px,4.4vw,40px);line-height:1.08;font-weight:800;text-wrap:balance;max-width:26ch}
 .hero h1 em{font-style:normal;color:var(--y)}
 .hero p{margin:0 0 16px;color:#b9bbc0;font-size:15px}
-.search{position:relative;max-width:760px}
+.search{position:relative;max-width:760px;margin:0 auto}
 .search input{width:100%;font:inherit;font-size:19px;font-weight:600;padding:16px 18px 16px 52px;border:0;border-radius:16px;background:#fff;color:#111;outline:none;box-shadow:0 0 0 1px rgba(255,255,255,.1)}
 .search input:focus{box-shadow:0 0 0 3px var(--y)}
 .search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:14px 0 0}
 .chip{font:inherit;font-size:14px;font-weight:700;border:1px solid #34363b;background:#1a1b1e;color:#e7e7e5;border-radius:999px;padding:8px 15px;min-height:40px;cursor:pointer;transition:background .15s,border-color .15s}
 .chip:hover{border-color:#5a5c62}
 .chip[aria-pressed=true]{background:var(--y);color:#111;border-color:var(--y)}
-nav.tabs{display:flex;gap:6px;margin-top:16px;overflow-x:auto}
+nav.tabs{display:flex;justify-content:center;gap:6px;margin-top:16px;overflow-x:auto}
 nav.tabs button{font:inherit;font-weight:700;font-size:15px;border:0;background:transparent;padding:12px 6px 14px;margin-right:14px;min-height:44px;cursor:pointer;color:#9fa1a7;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs button[aria-selected=true]{color:#fff;border-color:var(--y)}
 main{padding:26px max(4vw,16px) 56px;max-width:1240px;margin:0 auto}
@@ -146,7 +146,7 @@ details.sec>div{margin-top:14px}
 <body>
 <header class="hero">
   <div class="brandline"><span class="logo">M</span>MAGNET · Sticle de protecție</div>
-  <h1>Ce sticlă se potrivește <em>telefonului clientului?</em></h1>
+  <h1>Ce sticlă s-ar potrivi <em>telefonului?</em></h1>
   <p>Scrie modelul telefonului sau textul de pe ambalajul sticlei.</p>
   <div class="search">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
