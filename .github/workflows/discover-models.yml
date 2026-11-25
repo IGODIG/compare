@@ -1,0 +1,42 @@
+name: Discover new phone models
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Compare recent GSMArena phones with the site
+        run: python scripts/discover_new_models.py
+
+      - name: Validate candidate JSON and site data
+        run: python scripts/validate_project.py
+
+      - name: Open or update review pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automation/new-model-candidates
+          delete-branch: true
+          add-paths: data/new-model-candidates.json
+          commit-message: "Add newly discovered phone candidates"
+          title: "Review new GSMArena phone candidates"
+          body: |
+            The daily catalog scan found phone entries that are not in the site database.
+
+            Review the market, exact variant, dimensions, camera cutout, curvature, image, and source before adding any model to the live site. This candidate list is not published as compatibility data.
+
