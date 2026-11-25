@@ -277,11 +277,11 @@ function renderNoi(){
   idx.sort((a,b)=>rk(D[b]).localeCompare(rk(D[a]))||D[a][1].localeCompare(D[b][1]));
   const lastAdd=D.reduce((a,m)=>m[11]>a?m[11]:a,'');
   const recent=idx.filter(i=>D[i][11]===lastAdd&&lastAdd>'2026-11-23');
-  const conf=idx.filter(i=>lv(D[i],'C').length).length;
+  const conf=idx.filter(i=>lv(D[i],'C').length).length,films=idx.filter(i=>isFilm(D[i])).length,toCheck=idx.filter(i=>!isFilm(D[i])&&!lv(D[i],'C').length).length;
   const lbl=m=>m[12]?mo[+m[12].slice(5)]+' '+m[12].slice(0,4):String(m[2]);
-  main.innerHTML=`<p class="hint">Modele lansate în 2025–2026: <b>${idx.length}</b> · confirmate <b>${conf}</b> · de verificat <b>${idx.length-conf}</b>. Lista se actualizează automat în fiecare săptămână${lastAdd?` (ultima actualizare: ${lastAdd})`:''}.</p>`+
-  (recent.length?`<section class="sec c"><header><h3>Adăugate săptămâna aceasta</h3><span class="n">${recent.length}</span></header><div class="gal">${recent.map(i=>card(i,lv(D[i],'C').length?'✓ Confirmat':'De verificat','')).join('')}</div></section>`:'')+
-  `<section class="sec"><div class="gal">${idx.slice(0,limit).map(i=>{const c=lv(D[i],'C').length,p=lv(D[i],'P').length;return card(i,c?'✓ '+c+' confirmat'+(c>1?'e':''):p?'De verificat':'Sticlă proprie','',c?'b-c':p?'b-p':'b-z',lbl(D[i]))}).join('')}</div></section>`+
+  main.innerHTML=`<p class="hint">Modele lansate în 2025–2026: <b>${idx.length}</b> · confirmate <b>${conf}</b> · de verificat <b>${toCheck}</b> · peliculă bronată <b>${films}</b>. Lista se actualizează automat în fiecare săptămână${lastAdd?` (ultima actualizare: ${lastAdd})`:''}.</p>`+
+  (recent.length?`<section class="sec c"><header><h3>Adăugate săptămâna aceasta</h3><span class="n">${recent.length}</span></header><div class="gal">${recent.map(i=>isFilm(D[i])?card(i,'Peliculă bronată','','b-p'):card(i,lv(D[i],'C').length?'✓ Confirmat':'De verificat','')).join('')}</div></section>`:'')+
+  `<section class="sec"><div class="gal">${idx.slice(0,limit).map(i=>{const m=D[i],c=lv(m,'C').length,p=lv(m,'P').length;return isFilm(m)?card(i,'Peliculă bronată','','b-p',lbl(m)):card(i,c?'✓ '+c+' confirmat'+(c>1?'e':''):p?'De verificat':'Sticlă proprie','',c?'b-c':p?'b-p':'b-z',lbl(m))}).join('')}</div></section>`+
   (idx.length>limit?`<button class="more" id="more">Arată mai multe (${idx.length-limit})</button>`:'');
 }
 function render(){main.className='';tab==='cauta'?renderSearch():tab==='noi'?renderNoi():tab==='sticle'?renderSticle():renderInfo()}
