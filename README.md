@@ -22,17 +22,23 @@ Detalii și praguri: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 ├── data.json                      # Datele sursă despre modele și compatibilități
 ├── favicon.svg                    # Iconul site-ului
 ├── data/
+│   ├── phone-images.json         # Sursa fiecărei fotografii salvate local
 │   └── new-model-candidates.json  # Modele descoperite automat, încă neverificate
+├── assets/
+│   └── phones/                    # Fotografii locale pentru modele fără imagine încorporată
 ├── docs/
 │   └── COMPATIBILITY.md           # Reguli și explicații pentru întreținere
 ├── scripts/
+│   ├── audit_critical_images.py   # Verifică săptămânal fotografiile Oppo și OnePlus
 │   ├── discover_new_models.py     # Caută zilnic modele noi pe GSMArena
 │   ├── sync_embedded_data.py      # Copiază data.json în index.html
-│   └── validate_project.py       # Verifică datele și sintaxa JavaScript
-└── .github/workflows/             # Verificări și scanarea zilnică
+│   └── validate_project.py        # Verifică datele, fotografiile și sintaxa JavaScript
+└── .github/workflows/
+    ├── audit-images.yml           # Audit săptămânal, luni la 07:37 Chișinău
+    └── ...                        # Validare și scanare zilnică
 ```
 
-`index.html` rămâne la rădăcină pentru publicarea directă prin GitHub Pages. Datele și fotografiile sunt încorporate pentru ca pagina să funcționeze fără dependențe de fișiere locale.
+`index.html` rămâne la rădăcină pentru publicarea directă prin GitHub Pages. Majoritatea fotografiilor sunt încorporate în pagină; imaginile locale din `assets/phones/` acoperă modelele ale căror fotografii nu sunt în setul încorporat. Sursa fiecărei imagini locale este păstrată în `data/phone-images.json`.
 
 ## Deschidere locală
 
@@ -53,6 +59,8 @@ Apoi accesează `http://localhost:8000`.
 5. Publicarea se face la push pe branch-ul `main`.
 
 > Scanarea zilnică găsește modele-candidat și deschide/actualizează un pull request. Nu adaugă automat modele neverificate în site: dimensiunile, piața, decupajul și fotografia trebuie confirmate înainte de publicare.
+
+Auditul săptămânal verifică dacă modelele Oppo și OnePlus marcate Global au imagini valide salvate în repository. Auditul nu verifică automat fotografia vizuală; sursa și fișierul trebuie confirmate la adăugarea unui model nou.
 
 Pentru ca workflow-ul să poată deschide pull request-uri, repository-ul trebuie să permită GitHub Actions să creeze pull request-uri în **Settings → Actions → General**.
 

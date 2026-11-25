@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "images": {
+    "1040": {
+      "model": "Oppo A5 2020",
+      "file": "assets/phones/1040.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5-2020.jpg"
+    },
+    "1041": {
+      "model": "Oppo A9 2020",
+      "file": "assets/phones/1041.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a9-2020-.jpg"
+    },
+    "1042": {
+      "model": "Oppo A18",
+      "file": "assets/phones/1042.webp",
+      "source_url": "https://d33i50qtfold6x.cloudfront.net/WX20220914-100950%402x.png/20240124/11-15-33_65b0e345222ec_.webp"
+    },
+    "1043": {
+      "model": "Oppo A38",
+      "file": "assets/phones/1043.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a38.jpg"
+    },
+    "1044": {
+      "model": "Oppo A57e",
+      "file": "assets/phones/1044.jpg",
+      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-a57e-3.jpg"
+    },
+    "1045": {
+      "model": "Oppo A59",
+      "file": "assets/phones/1045.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a59.jpg"
+    },
+    "1056": {
+      "model": "OnePlus Nord N300",
+      "file": "assets/phones/1056.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n300-5g.jpg"
+    },
+    "1057": {
+      "model": "OnePlus Nord N20 SE",
+      "file": "assets/phones/1057.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n20-se.jpg"
+    },
+    "1060": {
+      "model": "Oppo A33 2020",
+      "file": "assets/phones/1060.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a33.jpg"
+    },
+    "1064": {
+      "model": "Oppo Reno4 Z 5G",
+      "file": "assets/phones/1064.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a92s.jpg"
+    },
+    "1093": {
+      "model": "Oppo A5 Energy",
+      "file": "assets/phones/1093.jpg",
+      "source_url": "https://cdn.mobilecity.vn/mobilecity-vn/images/2025/03/oppo-a5-enregy-mau-sac.jpg"
+    },
+    "1094": {
+      "model": "Oppo A5 Pro 4G",
+      "file": "assets/phones/1094.webp",
+      "source_url": "https://assets.oppostore.it/Cover-1744465586949.webp"
+    },
+    "1095": {
+      "model": "Oppo A5x 4G",
+      "file": "assets/phones/1095.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5x.jpg"
+    },
+    "1096": {
+      "model": "Oppo A58 4G",
+      "file": "assets/phones/1096.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a58-4g.jpg"
+    },
+    "1130": {
+      "model": "Oppo Reno4 F",
+      "file": "assets/phones/1130.jpg",
+      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-reno4-f-4.jpg"
+    },
+    "1138": {
+      "model": "Oppo Reno 15fs",
+      "file": "assets/phones/1138.jpg",
+      "source_url": "https://i.gadgets360cdn.com/products/large/oppo-reno-15-fs-5g-oppo-db-651x800-1768983270.jpg?downsize=%2A%3A180"
+    },
+    "1143": {
+      "model": "Oppo A6 Pro 4G / A6 Pro 5G (Global)",
+      "file": "assets/phones/1143.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-pro-4g.jpg"
+    },
+    "1149": {
+      "model": "Oppo A6c 4G",
+      "file": "assets/phones/1149.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6c.jpg"
+    },
+    "1151": {
+      "model": "Oppo A6 4G",
+      "file": "assets/phones/1151.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-4g.jpg"
+    },
+    "1152": {
+      "model": "Oppo A6x 5G",
+      "file": "assets/phones/1152.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6x-5g.jpg"
+    },
+    "1153": {
+      "model": "Oppo A6s 5G / A6s 4G",
+      "file": "assets/phones/1153.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6s.jpg"
+    },
+    "1163": {
+      "model": "Oppo Reno5 Lite",
+      "file": "assets/phones/1163.jpg",
+      "source_url": "https://fdn.gsmarena.com/imgroot/news/21/03/oppo-reno-5-lite-ofic/-1200/gsmarena_004.jpg"
+    },
+    "1164": {
+      "model": "Oppo Reno 7z 5G",
+      "file": "assets/phones/1164.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-reno7-z-5g.jpg"
+    },
+    "1165": {
+      "model": "Oppo Reno 7 4G",
+      "file": "assets/phones/1165.png",
+      "source_url": "https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno7_4g/listpage/listpage-SunsetOrange-427_600-pc.png"
+    },
+    "1166": {
+      "model": "Oppo Reno7 Lite",
+      "file": "assets/phones/1166.png",
+      "source_url": "https://cdn.beebom.com/mobile/oppo-reno7-lite/oppo-reno7-lite-front-back-design%20%282%29.png"
+    },
+    "1169": {
+      "model": "OnePlus 11",
+      "file": "assets/phones/1169.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-11.jpg"
+    },
+    "1170": {
+      "model": "OnePlus 12",
+      "file": "assets/phones/1170.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-12.jpg"
+    },
+    "1171": {
+      "model": "OnePlus 13",
+      "file": "assets/phones/1171.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-13.jpg"
+    },
+    "1172": {
+      "model": "OnePlus 15",
+      "file": "assets/phones/1172.jpg",
+      "source_url": "https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/original/one-plus/494742151/0/Z0esG6YSXs-dluhEu72wp-OnePlusOneplus15-MP-494742151-i-1.jpg"
+    },
+    "1173": {
+      "model": "OnePlus Nord 3",
+      "file": "assets/phones/1173.png",
+      "source_url": "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/vitamin/vitamin-spec-black.png"
+    },
+    "1174": {
+      "model": "OnePlus Nord 4",
+      "file": "assets/phones/1174.png",
+      "source_url": "https://images.biggeek.ru/1/870/970e/28182-7738bb6170dd07822e3bf9ae62a30e00a5a%402x.png"
+    },
+    "1175": {
+      "model": "OnePlus Nord 5",
+      "file": "assets/phones/1175.webp",
+      "source_url": "https://partneroteszt.cdn.shoprenter.hu/custom/partneroteszt/image/data/op_n5_blue.jpg.webp?lastmod=1760289961.1672309585"
+    },
+    "1176": {
+      "model": "OnePlus Nord CE5",
+      "file": "assets/phones/1176.png",
+      "source_url": "https://image01-in.oneplus.net/media/202507/03/e21d33b2feafabb0688027560a6c8f66.png"
+    }
+  }
+}
