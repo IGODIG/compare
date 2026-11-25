@@ -34,7 +34,7 @@ Detalii și praguri: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   ├── sync_embedded_data.py      # Copiază data.json în index.html
 │   └── validate_project.py        # Verifică datele, fotografiile și sintaxa JavaScript
 └── .github/workflows/
-    ├── audit-images.yml           # Audit săptămânal, luni la 07:37 Chișinău
+    ├── audit-images.yml           # Audit săptămânal, luni la 05:37 UTC
     └── ...                        # Validare și scanare zilnică
 ```
 
