@@ -30,6 +30,7 @@ Detalii și praguri: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   └── COMPATIBILITY.md           # Reguli și explicații pentru întreținere
 ├── scripts/
 │   ├── audit_critical_images.py   # Verifică săptămânal fotografiile Oppo și OnePlus
+│   ├── audit_model_completeness.py # Raport lunar pentru câmpuri și imagini lipsă
 │   ├── discover_new_models.py     # Caută modele noi pe GSMArena
 │   ├── discover_official_models.py # Scanează surse oficiale, după programul brandurilor
 │   ├── sync_embedded_data.py      # Copiază data.json în index.html

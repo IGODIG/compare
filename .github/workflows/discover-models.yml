@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Add monthly completeness report to the run summary
+        run: python scripts/audit_model_completeness.py
+
       - name: Try GSMArena as an additional catalog source
         continue-on-error: true
         run: python scripts/discover_new_models.py
