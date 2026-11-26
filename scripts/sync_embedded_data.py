@@ -20,6 +20,10 @@ PATTERN = re.compile(
     r"(const EMBEDDED_DATA=)(\{.*?\})(;\s*const EMBEDDED_BUNDLES=)",
     flags=re.DOTALL,
 )
+EXTRA_IMAGES_PATTERN = re.compile(
+    r"(const EXTRA_IMAGES=)(\{.*?\})(;\s*const bundle=)",
+    flags=re.DOTALL,
+)
 
 
 def main() -> None:
@@ -29,8 +33,21 @@ def main() -> None:
     updated, count = PATTERN.subn(lambda m: m.group(1) + replacement + m.group(3), html, count=1)
     if count != 1:
         raise SystemExit("Nu am găsit blocul EMBEDDED_DATA în index.html; nu am modificat fișierul.")
+    manifest_path = ROOT / "data" / "phone-images.json"
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        match = EXTRA_IMAGES_PATTERN.search(updated)
+        if not match:
+            raise SystemExit("Nu am găsit blocul EXTRA_IMAGES în index.html.")
+        extras = json.loads(match.group(2))
+        for model_id, record in manifest.get("images", {}).items():
+            extras[str(model_id)] = record["file"]
+        images_json = json.dumps(extras, ensure_ascii=False, separators=(",", ":"))
+        updated = EXTRA_IMAGES_PATTERN.sub(
+            lambda m: m.group(1) + images_json + m.group(3), updated, count=1
+        )
     HTML_PATH.write_text(updated, encoding="utf-8", newline="\n")
-    print(f"Datele din {DATA_PATH.name} au fost încorporate în {HTML_PATH.name}.")
+    print(f"Datele și imaginile locale din repository au fost sincronizate în {HTML_PATH.name}.")
 
 
 if __name__ == "__main__":

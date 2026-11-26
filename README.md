@@ -30,12 +30,15 @@ Detalii și praguri: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   └── COMPATIBILITY.md           # Reguli și explicații pentru întreținere
 ├── scripts/
 │   ├── audit_critical_images.py   # Verifică săptămânal fotografiile Oppo și OnePlus
-│   ├── discover_new_models.py     # Caută zilnic modele noi pe GSMArena
+│   ├── discover_new_models.py     # Caută modele noi pe GSMArena
+│   ├── discover_official_models.py # Scanează surse oficiale, după programul brandurilor
 │   ├── sync_embedded_data.py      # Copiază data.json în index.html
 │   └── validate_project.py        # Verifică datele, fotografiile și sintaxa JavaScript
 └── .github/workflows/
     ├── audit-images.yml           # Audit săptămânal, luni la 05:37 UTC
-    └── ...                        # Validare și scanare zilnică
+    ├── discover-models.yml         # Scanare lunară și PR pentru candidați
+    ├── sync-model-database.yml     # Sincronizează automat data.json în site la push
+    └── validate.yml                # Validează datele și JavaScript-ul
 ```
 
 `index.html` rămâne la rădăcină pentru publicarea directă prin GitHub Pages. Majoritatea fotografiilor sunt încorporate în pagină; imaginile locale din `assets/phones/` acoperă modelele ale căror fotografii nu sunt în setul încorporat. Sursa fiecărei imagini locale este păstrată în `data/phone-images.json`.
@@ -52,13 +55,13 @@ Apoi accesează `http://localhost:8000`.
 
 ## Actualizare și publicare
 
-1. Editează `data.json` și completează datele verificate ale modelului.
-2. Dacă ai adăugat fotografii, actualizează și setul de imagini încorporate în `index.html`.
-3. Rulează `python scripts/sync_embedded_data.py` și `python scripts/validate_project.py`.
-4. Deschide site-ul local, verifică o căutare și commită `data.json` împreună cu `index.html`.
-5. Publicarea se face la push pe branch-ul `main`.
+1. Adaugă în `data.json` datele verificate ale modelului și păstrează sursa în câmpul `sources`.
+2. Pentru o fotografie locală, salvează fișierul în `assets/phones/` și înregistrează indexul modelului și URL-ul sursei în `data/phone-images.json`.
+3. Local, rulează `python scripts/sync_embedded_data.py` și `python scripts/validate_project.py` înainte de commit.
+4. La push pe `main`, `sync-model-database.yml` încorporează automat baza și maparea imaginilor în `index.html`, validează rezultatul și face commit la HTML-ul generat.
+5. Site-ul recalculează automat potrivirile pentru toate modelele. Nu sunt necesare perechi de compatibilitate introduse manual când dimensiunile și forma camerei sunt completate.
 
-> Scanarea zilnică găsește modele-candidat și deschide/actualizează un pull request. Nu adaugă automat modele neverificate în site: dimensiunile, piața, decupajul și fotografia trebuie confirmate înainte de publicare.
+> Toate brandurile sunt scanate lunar din surse oficiale, iar GSMArena este încercată ca sursă suplimentară. Erorile unei surse nu opresc scanarea celorlalte. Scanarea deschide/actualizează un pull request cu modele-candidat, fără să adauge modele neverificate în site. Dimensiunile, piața, decupajul și fotografia trebuie confirmate înainte de publicare.
 
 Auditul săptămânal verifică dacă modelele Oppo și OnePlus marcate Global au imagini valide salvate în repository. Auditul nu verifică automat fotografia vizuală; sursa și fișierul trebuie confirmate la adăugarea unui model nou.
 

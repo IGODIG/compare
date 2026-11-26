@@ -2,7 +2,7 @@ name: Discover new phone models
 
 on:
   schedule:
-    - cron: "17 5 * * *"
+    - cron: "17 5 1 * *"
   workflow_dispatch:
 
 permissions:
@@ -21,8 +21,12 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Compare recent GSMArena phones with the site
+      - name: Try GSMArena as an additional catalog source
+        continue-on-error: true
         run: python scripts/discover_new_models.py
+
+      - name: Scan monthly official sources
+        run: python scripts/discover_official_models.py --group all
 
       - name: Validate candidate JSON and site data
         run: python scripts/validate_project.py
@@ -34,9 +38,9 @@ jobs:
           delete-branch: true
           add-paths: data/new-model-candidates.json
           commit-message: "Add newly discovered phone candidates"
-          title: "Review new GSMArena phone candidates"
+          title: "Review new phone model candidates"
           body: |
-            The daily catalog scan found phone entries that are not in the site database.
+            The monthly scan found phone candidates in official brand sources and may include GSMArena catalog entries.
 
-            Review the market, exact variant, dimensions, camera cutout, curvature, image, and source before adding any model to the live site. This candidate list is not published as compatibility data.
+            Review the exact model and sales region, dimensions, camera cutout, curvature, image, and source before adding any model to the live site. This candidate list is not published as compatibility data.
 

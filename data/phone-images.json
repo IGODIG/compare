@@ -165,6 +165,71 @@
       "model": "OnePlus Nord CE5",
       "file": "assets/phones/1176.png",
       "source_url": "https://image01-in.oneplus.net/media/202507/03/e21d33b2feafabb0688027560a6c8f66.png"
+    },
+    "1202": {
+      "model": "Redmi Note 17 Pro Max 5G",
+      "file": "assets/phones/1202.png",
+      "source_url": "https://i02.appmifile.com/323_operator_sg/24/08/2026/1ef9c7e6bbab71ad6bf32f738066bf12.png"
+    },
+    "1203": {
+      "model": "Redmi Note 17 Pro 5G",
+      "file": "assets/phones/1203.png",
+      "source_url": "https://i02.appmifile.com/26_operator_sg/24/08/2026/ab065bd494998d05f086324558ce4935.png"
+    },
+    "1204": {
+      "model": "Redmi Note 17 5G",
+      "file": "assets/phones/1204.png",
+      "source_url": "https://i02.appmifile.com/433_operator_sg/04/08/2026/61b6109d932fa6ae924f0f1bea199fe4.png"
+    },
+    "1205": {
+      "model": "Redmi 17",
+      "file": "assets/phones/1205.png",
+      "source_url": "https://i02.appmifile.com/396_operator_sg/22/07/2026/2215d12b7d0dc2ad986d9643c570ad36.png"
+    },
+    "1206": {
+      "model": "Redmi Note 15 Pro",
+      "file": "assets/phones/1206.png",
+      "source_url": "https://i02.appmifile.com/47_operator_sg/19/12/2025/5e434dcb9f897ee5791cc019ceb831bc.png"
+    },
+    "1207": {
+      "model": "POCO F9 Ultra",
+      "file": "assets/phones/1207.png",
+      "source_url": "https://i02.appmifile.com/545_operator_sg/15/08/2026/66a9735335fd7a6b04318ac96e917565.png"
+    },
+    "1208": {
+      "model": "POCO F9 Pro",
+      "file": "assets/phones/1208.png",
+      "source_url": "https://i02.appmifile.com/248_operator_sg/15/08/2026/2a9cdef4193cbe5ac983a485492cc7e4.png"
+    },
+    "1209": {
+      "model": "POCO X8 Pro",
+      "file": "assets/phones/1209.png",
+      "source_url": "https://i02.appmifile.com/864_operator_sg/25/05/2026/831c2a6a5d280720bf6544a34ce09b17.png"
+    },
+    "1210": {
+      "model": "POCO F8 Ultra",
+      "file": "assets/phones/1210.png",
+      "source_url": "https://i02.appmifile.com/869_operator_sg/17/11/2025/b0fc8559de0f1379aa5f181792a6c40a.png"
+    },
+    "1211": {
+      "model": "POCO F8 Pro",
+      "file": "assets/phones/1211.png",
+      "source_url": "https://i02.appmifile.com/550_operator_sg/16/11/2025/2b8e8a7404eee32e1034bce875893472.png"
+    },
+    "1212": {
+      "model": "Find N6 — interior",
+      "file": "assets/phones/find-n6.png",
+      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png"
+    },
+    "1213": {
+      "model": "Find N6 — exterior",
+      "file": "assets/phones/find-n6.png",
+      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png"
+    },
+    "1214": {
+      "model": "HONOR X7e Plus",
+      "file": "assets/phones/1214.png",
+      "source_url": "https://www-file.honor.com/content/dam/honor/common/product-list/product-series/honor-x7e-plus/honor-x7e-plus-id-gold-back.png"
     }
   }
 }

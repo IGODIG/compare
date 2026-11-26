@@ -26,5 +26,8 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Synchronize model data into the self-contained site
+        run: python scripts/sync_embedded_data.py
+
       - name: Validate embedded data and JavaScript
         run: python scripts/validate_project.py
