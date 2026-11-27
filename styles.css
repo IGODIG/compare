@@ -118,6 +118,7 @@ details.sec>div{margin-top:14px}
 .det .stage{padding:12px 8px}.det .stage::after{bottom:8px}.det .stage img{width:80px;height:170px}
 .det .info{padding:16px 20px}.det .info h2{font-size:clamp(22px,3vw,30px);margin:2px 0 8px}
 .det .spec{font-size:12px;padding:4px 8px;white-space:normal}.det .verdict{margin:10px 0 4px;padding:9px 12px;font-size:15px;border-radius:12px}.det .verdict .ic{width:26px;height:26px;font-size:14px}
+.det .verdict-copy{flex:1;min-width:0;overflow-wrap:anywhere}.det .verdict-copy a{display:block;width:fit-content;max-width:100%;margin-top:6px;color:inherit;text-decoration-color:var(--y);text-underline-offset:3px;overflow-wrap:anywhere}
 .det .cmp h4{margin:10px 0 6px}.det .cut{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));grid-template-rows:repeat(2,auto);grid-auto-rows:0;overflow:hidden;gap:8px 8px;padding-bottom:0}.det .cut figure{width:auto;font-size:11px;min-width:0}.det .cut figure{overflow:hidden;text-overflow:ellipsis}.det .cut .z{width:100%;height:44px}
 .det .sec{margin:16px 0 0}.det .sec h3{font-size:17px}.det .sec>p,.det .sec .hint{font-size:12.5px;margin:2px 0 8px}
 .det .gal{gap:8px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
