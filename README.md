@@ -2,7 +2,7 @@
 
 Instrument web pentru ateliere de reparații telefoane. Caută un model și vezi telefoane care pot folosi aceeași sticlă, potriviri probabile și recomandarea de protecție pentru ecrane curbate sau pliabile.
 
-Site-ul este static și se publică prin GitHub Pages: [igodig.github.io/compare](https://igodig.github.io/compare/). `index.html` este un shell mic; codul, catalogul și imaginile sunt fișiere separate. Catalogul se încarcă la pornire, sursele la deschiderea fișei, iar imaginile pe măsură ce intră în ecran.
+Site-ul este static și se publică prin GitHub Pages: [igodig.github.io/compare](https://igodig.github.io/compare/). `index.html` este un shell mic; codul, catalogul și imaginile sunt fișiere separate. Catalogul se încarcă la pornire, sursele la deschiderea fișei, iar imaginile pe măsură ce intră în ecran. Fontul Manrope este găzduit local, iar GitHub Actions limitează fotografiile individuale la 600 KB.
 
 ## Cum se calculează potrivirile
 
@@ -31,11 +31,13 @@ Detalii: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   ├── phone-images.json           # Imagini frontale locale și sursele lor
 │   └── new-model-candidates.json   # Candidați încă neverificați
 ├── assets/
+│   ├── fonts/                      # Manrope local (OFL)
 │   ├── image-bundles/              # Pachete de imagini încărcate la cerere
 │   └── phones/                     # Fotografii locale
 ├── docs/COMPATIBILITY.md
 ├── scripts/
 │   ├── audit_critical_images.py
+│   ├── check_image_budget.py
 │   ├── audit_model_completeness.py
 │   ├── build_standalone.py         # Generează index-complet.html la cerere
 │   ├── discover_new_models.py
@@ -62,14 +64,16 @@ Accesează `http://localhost:8000`. Verificările proiectului:
 
 ```bash
 python scripts/validate_project.py
+python scripts/check_image_budget.py
 node --test tests/matching.test.mjs
+python scripts/build_standalone.py
 ```
 
 Pentru o copie HTML autonomă, rulează `python scripts/build_standalone.py`. Aceasta generează `index-complet.html`; fișierul principal pentru GitHub Pages rămâne modular și mic.
 
 ## Actualizare și publicare
 
-Adaugă modelul verificat în `data.json` cu un ID stabil nou (`m_` și 12 cifre hexazecimale). Relațiile din câmpurile `10`, `13` și grupele `g` folosesc ID-uri stabile. Înregistrează în `data/phone-images.json` numai imagini cu telefonul văzut din față; decupajele pentru fotografiile compozite se salvează în `assets/phones/front/`. GitHub Pages servește direct fișierele statice; nu mai este nevoie să încorporezi baza sau imaginile în `index.html`.
+Adaugă modelul verificat în `data.json` cu un ID stabil nou (`m_` și 12 cifre hexazecimale). Relațiile din câmpurile `10`, `13` și grupele `g` folosesc ID-uri stabile. Înregistrează în `data/phone-images.json` numai imagini cu telefonul văzut din față; redimensionează-le pentru interfață și păstrează fișierele locale sub 600 KB. Decupajele pentru fotografiile compozite se salvează în `assets/phones/front/`. GitHub Actions verifică dimensiunea imaginilor, iar GitHub Pages servește direct fișierele statice.
 
 Scanarea lunară compară sursele oficiale și GSMArena și deschide un pull request cu modele-candidat. Candidații nu apar pe site înainte de verificarea dimensiunilor, pieței, camerei și fotografiei. Auditul săptămânal verifică imaginile Oppo și OnePlus Global.
 

@@ -56,13 +56,18 @@ def main() -> None:
         uid: {**record, "file": asset_data_uri(record["file"])}
         for uid, record in manifest.get("images", {}).items()
     }
+    for font in ("assets/fonts/manrope-latin.woff2", "assets/fonts/manrope-latin-ext.woff2"):
+        css = css.replace(f"url('./{font}')", f"url('{asset_data_uri(font)}')")
 
     app = re.sub(r"^import .*?;\s*", "", app, count=1)
     app = re.sub(r"\bexport\s+(?=function\s)", "", matching) + "\n" + app
-    app = app.replace(
-        "const [EMBEDDED_DATA,MODEL_CODES,IMAGE_FALLBACKS,IMAGE_MANIFEST]=await Promise.all([\n  loadJSON('./data.json'),\n  loadJSON('./data/model-codes.json'),\n  loadJSON('./data/image-fallbacks.json'),\n  loadJSON('./data/phone-images.json'),\n]);",
-        f"const [EMBEDDED_DATA,MODEL_CODES,IMAGE_FALLBACKS,IMAGE_MANIFEST]=[{compact(data)},{compact(model_codes)},{compact(fallbacks)},{compact(manifest)}];",
-    )
+    data_init = "const [EMBEDDED_DATA,MODEL_CODES,IMAGE_FALLBACKS,IMAGE_MANIFEST]="
+    data_start = app.index(data_init)
+    data_end = app.index("\nconst EMBEDDED_BUNDLES", data_start)
+    app = app[:data_start] + (
+        f"const [EMBEDDED_DATA,MODEL_CODES,IMAGE_FALLBACKS,IMAGE_MANIFEST]="
+        f"[{compact(data)},{compact(model_codes)},{compact(fallbacks)},{compact(manifest)}];"
+    ) + app[data_end:]
     app = app.replace("const EMBEDDED_BUNDLES={};", f"const EMBEDDED_BUNDLES={compact(bundles)};")
 
     app = app.replace(
@@ -73,6 +78,7 @@ def main() -> None:
         raise SystemExit("Nu am putut încorpora toate fișierele JSON în aplicația autonomă.")
 
     html = re.sub(r'<link rel="stylesheet" href="\./styles\.css">', f"<style>\n{css}\n</style>", html, count=1)
+    html = re.sub(r'<link rel="preload" href="\./assets/fonts/[^\"]+" as="font" type="font/woff2" crossorigin>\n?', "", html)
     html = re.sub(r'<script type="module" src="\./app\.js"></script>', lambda _: f"<script type=\"module\">\n{app}\n</script>", html, count=1)
     output = ROOT / "index-complet.html"
     output.write_text(html, encoding="utf-8", newline="\n")

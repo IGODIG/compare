@@ -6,7 +6,9 @@
 
 Fiecare rând din `data.json` are un ID stabil în câmpul `19`, de forma `m_` urmat de 12 caractere hexazecimale. Generează-l o singură dată și păstrează-l la editările viitoare. Relațiile din câmpurile `10` și `13`, grupele `g` și manifestele imaginilor folosesc acest ID, nu poziția telefonului în listă.
 
-Pentru o fotografie locală, salvează fișierul în `assets/phones/` și adaugă o intrare cu ID-ul modelului, numele fișierului și URL-ul sursei în `data/phone-images.json`. Pachetele principale de imagini din `assets/image-bundles/` nu trebuie reordonate sau renumerotate fără actualizarea ID-urilor de imagine din câmpul `7`.
+Pentru o fotografie locală, folosește imagine frontală, redimensioneaz-o pentru interfață și păstreaz-o sub 600 KB. Salveaz-o în `assets/phones/front/` și adaugă o intrare cu ID-ul modelului, numele fișierului și URL-ul sursei în `data/phone-images.json`. Pachetele principale de imagini din `assets/image-bundles/` nu trebuie reordonate sau renumerotate fără actualizarea ID-urilor de imagine din câmpul `7`.
+
+Fonturile locale din `assets/fonts/` sunt Manrope sub licența SIL Open Font License. Dacă le înlocuiești, păstrează licența și actualizează preload-urile din `index.html` și încorporarea din `scripts/build_standalone.py`.
 
 ## Verificări
 
@@ -14,7 +16,9 @@ Rulează înainte de commit:
 
 ```bash
 python scripts/validate_project.py
+python scripts/check_image_budget.py
 node --test tests/matching.test.mjs
+python scripts/build_standalone.py
 ```
 
 Testele folosesc aceleași funcții din `matching.mjs` ca pagina și verifică pragurile, camera, curbura și ordinea rezultatelor.

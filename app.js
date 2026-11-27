@@ -7,7 +7,12 @@ const [EMBEDDED_DATA,MODEL_CODES,IMAGE_FALLBACKS,IMAGE_MANIFEST]=await Promise.a
   loadJSON('./data/model-codes.json'),
   loadJSON('./data/image-fallbacks.json'),
   loadJSON('./data/phone-images.json'),
-]);
+]).catch(error=>{
+  const panel=document.querySelector('#main');
+  if(panel){panel.setAttribute('aria-busy','false');panel.innerHTML='<section class="load-error" role="alert"><h2>Catalogul nu s-a putut încărca.</h2><p>Verifică conexiunea la internet și încearcă din nou.</p><a href="./">Reîncarcă pagina</a></section>'}
+  console.error('Încărcarea catalogului Magnet a eșuat.',error);
+  throw error;
+});
 const EMBEDDED_BUNDLES={};
 const $=s=>document.querySelector(s), main=$('#main'), q=$('#q');
 let D=[],SRC={},GL=[],evidencePromise=null,evidenceLoaded=false,brand='Toate',tab='cauta',limit=60;
@@ -129,14 +134,15 @@ function renderNoi(){
   `<section class="sec"><div class="gal">${idx.slice(0,limit).map(i=>{const m=D[i],c=lv(m,'C').length,p=lv(m,'P').length;return isFilm(m)||m[16]==='curbat'?card(i,'Protecție - Folie hydrogel','','b-p',lbl(m)):c&&lv(m,'C').some(x=>x[1]==='G')?card(i,'✓ Confirmat după dimensiuni','Regula: corp ±0,5 mm și cameră potrivită','b-c',lbl(m)):card(i,c?'✓ '+c+' confirmat'+(c>1?'e':''):p?'Probabil · probează fizic':'Fără confirmare','',c?'b-c':p?'b-p':'b-z',lbl(m))}).join('')}</div></section>`+
   (idx.length>limit?`<button class="more" id="more">Arată mai multe (${idx.length-limit})</button>`:'');
 }
-function render(){main.className='';tab==='cauta'?renderSearch():tab==='noi'?renderNoi():tab==='sticle'?renderSticle():renderInfo()}
+function render(){main.className='';main.setAttribute('aria-busy','false');tab==='cauta'?renderSearch():tab==='noi'?renderNoi():tab==='sticle'?renderSticle():renderInfo()}
 new MutationObserver(()=>hydrate(main)).observe(main,{childList:true,subtree:true});
-function setTabUI(t){for(const b of ['cauta','noi','sticle','info'])$('#t-'+b).setAttribute('aria-selected',b===t)}
+function setTabUI(t){for(const b of ['cauta','noi','sticle','info']){const selected=b===t,button=$('#t-'+b);button.setAttribute('aria-selected',selected);button.tabIndex=selected?0:-1}main.setAttribute('aria-labelledby','t-'+t)}
 function setTab(t){tab=t;limit=60;setTabUI(t);if(location.hash)history.replaceState(null,'',' ');render()}
 $('#brands').innerHTML=BR.map(b=>`<button class="chip" aria-pressed="${b==='Toate'}" data-b="${b}">${b}</button>`).join('');
 $('#brands').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;brand=b.dataset.b;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));limit=60;if(tab==='info')setTab('cauta');else render()});
 q.addEventListener('input',()=>{limit=60;if(location.hash)history.replaceState(null,'',' ');if(tab==='info')setTab('cauta');else render()});
 $('#t-cauta').onclick=()=>setTab('cauta');$('#t-noi').onclick=()=>setTab('noi');$('#t-sticle').onclick=()=>setTab('sticle');$('#t-info').onclick=()=>setTab('info');
+$('.tabs').addEventListener('keydown',event=>{const buttons=[...$('.tabs').querySelectorAll('[role="tab"]')],current=buttons.indexOf(document.activeElement);if(current<0)return;let next=null;if(event.key==='ArrowRight')next=(current+1)%buttons.length;else if(event.key==='ArrowLeft')next=(current-1+buttons.length)%buttons.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=buttons.length-1;if(next!==null){event.preventDefault();buttons[next].focus();buttons[next].click()}});
 
 main.addEventListener('click',e=>{const vb=e.target.closest('.vb');if(vb){vote(vb);return}if(e.target.id==='back'){history.replaceState(null,'',' ');tab='cauta';setTabUI('cauta');renderSearch();return}if(e.target.id==='more'){limit+=120;render();return}const r=e.target.closest('[data-i]');if(r){hideTip();tab='cauta';setTabUI('cauta');renderDetail(+r.dataset.i)}});
 const tip=$('#tip'),tipImg=tip.querySelector('img'),tipB=tip.querySelector('b'),tipS=tip.querySelector('small'),tipL=tip.querySelector('.cl');
