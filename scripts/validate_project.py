@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate project JSON, embedded data consistency, and inline JavaScript syntax."""
+"""Validate the static app, stable model references, and local image assets."""
 
 from __future__ import annotations
 
@@ -11,84 +11,112 @@ import sys
 import tempfile
 from pathlib import Path
 
-
 for stream in (sys.stdout, sys.stderr):
     if hasattr(stream, "reconfigure"):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parents[1]
-EMBEDDED_DATA = re.compile(
-    r"const EMBEDDED_DATA=(\{.*?\});\s*const EMBEDDED_BUNDLES=",
-    flags=re.DOTALL,
-)
-EXTRA_IMAGES = re.compile(r"const EXTRA_IMAGES=(\{.*?\});\s*const bundle=", flags=re.DOTALL)
-INLINE_SCRIPT = re.compile(r"<script(?:\s[^>]*)?>(.*?)</script>", flags=re.DOTALL | re.IGNORECASE)
+UID = re.compile(r"^m_[0-9a-f]{12}$")
+IMAGE_SIGNATURES = (b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"RIFF", b"GIF8")
 
 
-def image_signature(path: Path) -> bool:
-    header = path.read_bytes()[:12]
-    return header.startswith((b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"RIFF", b"GIF8"))
+def read_json(path: Path) -> object:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise SystemExit(f"JSON invalid în {path.relative_to(ROOT)}: {error}") from error
 
 
 def main() -> None:
-    data_path = ROOT / "data.json"
-    site_path = ROOT / "index.html"
-    data = json.loads(data_path.read_text(encoding="utf-8"))
-    if not isinstance(data.get("m"), list) or not data["m"]:
-        raise SystemExit("data.json trebuie să conțină o listă m cu modele.")
+    data = read_json(ROOT / "data.json")
+    if not isinstance(data, dict) or not isinstance(data.get("m"), list) or not data["m"]:
+        raise SystemExit("data.json trebuie să conțină o listă nevidă de modele în câmpul m.")
+    models = data["m"]
+    ids = [model[19] if len(model) > 19 else None for model in models]
+    if any(not isinstance(uid, str) or not UID.fullmatch(uid) for uid in ids):
+        raise SystemExit("Fiecare model trebuie să aibă un identificator stabil în câmpul 19.")
+    if len(set(ids)) != len(ids):
+        raise SystemExit("Identificatorii stabili ai modelelor trebuie să fie unici.")
+    id_set = set(ids)
 
-    html = site_path.read_text(encoding="utf-8")
-    embedded_match = EMBEDDED_DATA.search(html)
-    if not embedded_match:
-        raise SystemExit("Nu am găsit blocul EMBEDDED_DATA în index.html.")
-    embedded = json.loads(embedded_match.group(1))
-    if embedded != data:
-        raise SystemExit("data.json nu corespunde datelor încorporate. Rulează python scripts/sync_embedded_data.py.")
-
-    images_match = EXTRA_IMAGES.search(html)
-    if not images_match:
-        raise SystemExit("Nu am găsit blocul EXTRA_IMAGES în index.html.")
-    extra_images = json.loads(images_match.group(1))
-    local_image_count = 0
-    for model_id, value in extra_images.items():
-        urls = value if isinstance(value, list) else [value]
-        for url in urls:
-            if not isinstance(url, str) or not url.startswith("assets/"):
+    for index, model in enumerate(models):
+        for position in (10, 13):
+            if len(model) <= position or not isinstance(model[position], list):
                 continue
-            image_path = (ROOT / url).resolve()
-            if ROOT.resolve() not in image_path.parents:
-                raise SystemExit(f"Calea imaginii iese din repository: {url}")
-            if not image_path.is_file() or not image_signature(image_path):
-                raise SystemExit(f"Fotografie locală lipsă sau invalidă pentru modelul {model_id}: {url}")
-            local_image_count += 1
+            for relation in model[position]:
+                if not isinstance(relation, list) or not relation or relation[0] not in id_set:
+                    raise SystemExit(f"Referință de model invalidă în {model[0]} {model[1]}, câmpul {position}.")
+                if relation[0] == ids[index]:
+                    raise SystemExit(f"Modelul {model[0]} {model[1]} are o relație cu sine însuși.")
 
-    image_manifest_path = ROOT / "data" / "phone-images.json"
-    if image_manifest_path.exists():
-        image_manifest = json.loads(image_manifest_path.read_text(encoding="utf-8"))
-        for model_id, record in image_manifest.get("images", {}).items():
-            image_path = ROOT / record.get("file", "")
-            if not image_path.is_file() or not record.get("source_url"):
-                raise SystemExit(f"Manifest de imagini incomplet pentru modelul {model_id}.")
+    for group in data.get("g", []):
+        if not isinstance(group, list) or len(group) < 2 or any(uid not in id_set for uid in group[1]):
+            raise SystemExit("Grupul de sticle conține un identificator de model invalid.")
+
+    html_path = ROOT / "index.html"
+    html = html_path.read_text(encoding="utf-8")
+    for reference in ('href="./styles.css"', 'src="./app.js"', 'href="./favicon.svg"'):
+        if reference not in html:
+            raise SystemExit(f"index.html nu include resursa necesară: {reference}")
+
+    bundles_dir = ROOT / "assets" / "image-bundles"
+    bundles: dict[str, list] = {}
+    for path in bundles_dir.glob("*.json"):
+        value = read_json(path)
+        if not isinstance(value, list):
+            raise SystemExit(f"Setul de imagini nu este o listă: {path.relative_to(ROOT)}")
+        bundles[path.stem] = value
+    for model in models:
+        image_id = model[7]
+        if isinstance(image_id, int) and image_id >= 0:
+            bundle = bundles.get(str(image_id // 50), [])
+            if image_id % 50 >= len(bundle) or not bundle[image_id % 50]:
+                raise SystemExit(f"Imagine încorporată lipsă pentru {model[0]} {model[1]}.")
+
+    manifest = read_json(ROOT / "data" / "phone-images.json")
+    image_records = manifest.get("images", {})
+    if any(uid not in id_set for uid in image_records):
+        raise SystemExit("Manifestul de imagini conține un identificator de model necunoscut.")
+    local_images: set[Path] = set()
+    for uid, record in image_records.items():
+        image_path = (ROOT / record.get("file", "")).resolve()
+        if ROOT.resolve() not in image_path.parents or not image_path.is_file():
+            raise SystemExit(f"Imagine locală lipsă pentru {uid}: {record.get('file')}")
+        if not image_path.read_bytes()[:12].startswith(IMAGE_SIGNATURES) or not record.get("source_url"):
+            raise SystemExit(f"Imagine invalidă sau fără sursă pentru {uid}.")
+        local_images.add(image_path)
+
+    fallbacks = read_json(ROOT / "data" / "image-fallbacks.json")
+    if any(uid not in id_set for uid in fallbacks):
+        raise SystemExit("Maparea imaginilor conține un identificator de model necunoscut.")
+
+    model_codes = read_json(ROOT / "data" / "model-codes.json")
+    if any(uid not in id_set or not isinstance(codes, list) or not codes for uid, codes in model_codes.get("models", {}).items()):
+        raise SystemExit("Codurile de model conțin un ID invalid sau o listă de coduri goală.")
+
+    evidence = read_json(ROOT / "data" / "compatibility-evidence.json")
+    texts, pairs = evidence.get("texts", []), evidence.get("pairs", {})
+    for pair, indexes in pairs.items():
+        left, right = pair.split(",", 1)
+        if left not in id_set or right not in id_set or any(not isinstance(i, int) or i < 0 or i >= len(texts) for i in indexes):
+            raise SystemExit("Dovezile de compatibilitate conțin o referință invalidă.")
 
     candidates_path = ROOT / "data" / "new-model-candidates.json"
     if candidates_path.exists():
-        candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
+        candidates = read_json(candidates_path)
         if not isinstance(candidates.get("candidates"), list):
             raise SystemExit("Fișierul de modele-candidat trebuie să conțină o listă candidates.")
 
     node = shutil.which("node")
-    scripts = INLINE_SCRIPT.findall(html)
-    if node and scripts:
-        with tempfile.TemporaryDirectory(prefix="magnet-validate-") as tmp:
-            js_path = Path(tmp) / "inline.js"
-            js_path.write_text("\n".join(scripts), encoding="utf-8")
-            result = subprocess.run([node, "--check", str(js_path)], capture_output=True, text=True)
+    if node:
+        for script in (ROOT / "app.js", ROOT / "matching.mjs"):
+            result = subprocess.run([node, "--check", str(script)], capture_output=True, text=True)
             if result.returncode:
-                raise SystemExit(result.stderr or "Verificarea sintaxei JavaScript a eșuat.")
-    elif not node:
-        print("Node.js lipsește; verificarea de sintaxă JavaScript a fost omisă.")
+                raise SystemExit(result.stderr or f"Sintaxă invalidă în {script.name}.")
+    else:
+        print("Node.js lipsește; verificarea sintaxei JavaScript a fost omisă.")
 
-    print(f"OK: {len(data['m'])} înregistrări; JSON și index.html sunt sincronizate; {local_image_count} imagini locale validate.")
+    print(f"OK: {len(models)} modele cu ID-uri stabile; relații, dovezi, pagină și {len(local_images)} imagini locale validate.")
 
 
 if __name__ == "__main__":

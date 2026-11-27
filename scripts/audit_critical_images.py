@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -14,8 +13,6 @@ for stream in (sys.stdout, sys.stderr):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parents[1]
-EXTRA_IMAGES = re.compile(r"const EXTRA_IMAGES=")
-EMBEDDED_BUNDLES = re.compile(r"const EMBEDDED_BUNDLES=")
 IMAGE_SIGNATURES = (b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"RIFF", b"GIF8")
 
 
@@ -26,29 +23,20 @@ def is_image(path: Path) -> bool:
         return False
 
 
-def parse_assignment(html: str, marker: re.Pattern[str]) -> dict:
-    match = marker.search(html)
-    if not match:
-        raise ValueError(f"Nu am găsit declarația {marker.pattern}.")
-    value, _ = json.JSONDecoder().raw_decode(html[match.end() :].lstrip())
-    return value
-
-
 def main() -> int:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
-    html = (ROOT / "index.html").read_text(encoding="utf-8")
-    try:
-        extras = parse_assignment(html, EXTRA_IMAGES)
-        bundles = parse_assignment(html, EMBEDDED_BUNDLES)
-    except ValueError as error:
-        print("Nu am găsit datele despre imagini în index.html.", file=sys.stderr)
-        return 1
+    bundles = {
+        path.stem: json.loads(path.read_text(encoding="utf-8"))
+        for path in (ROOT / "assets" / "image-bundles").glob("*.json")
+    }
     manifest_path = ROOT / "data" / "phone-images.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"images": {}}
+    fallbacks_path = ROOT / "data" / "image-fallbacks.json"
+    extras = json.loads(fallbacks_path.read_text(encoding="utf-8")) if fallbacks_path.exists() else {}
     failures: list[str] = []
     checked = 0
 
-    for index, model in enumerate(data["m"]):
+    for model in data["m"]:
         if model[0] not in {"Oppo", "OnePlus"} or model[14] != "Global":
             continue
         checked += 1
@@ -59,7 +47,9 @@ def main() -> int:
                 failures.append(f"{model[0]} {model[1]}: imaginea încorporată {image_id} lipsește")
             continue
 
-        image = extras.get(str(index))
+        uid = model[19]
+        record = manifest.get("images", {}).get(uid, {})
+        image = record.get("file") or extras.get(uid)
         image = image[0] if isinstance(image, list) and image else image
         if not isinstance(image, str) or not image.startswith("assets/"):
             failures.append(f"{model[0]} {model[1]}: fotografia nu este salvată local")
@@ -69,7 +59,7 @@ def main() -> int:
             failures.append(f"{model[0]} {model[1]}: fotografia locală lipsește sau este invalidă ({image})")
             continue
 
-        source = manifest.get("images", {}).get(str(index), {})
+        source = record
         if source.get("file") != image or not source.get("source_url"):
             failures.append(f"{model[0]} {model[1]}: lipsește sursa fotografiei din manifest")
 

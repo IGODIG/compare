@@ -16,15 +16,6 @@ for stream in (sys.stdout, sys.stderr):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
 
-def read_assignment(html: str, marker: str) -> object:
-    start = html.find(marker)
-    if start < 0:
-        raise ValueError(f"Nu am găsit declarația {marker!r} în index.html.")
-    decoder = json.JSONDecoder()
-    value, _ = decoder.raw_decode(html[start + len(marker) :].lstrip())
-    return value
-
-
 def display_name(model: list[object]) -> str:
     film = model[17] == "film" if len(model) > 17 else False
     if film:
@@ -39,7 +30,7 @@ def image_status(index: int, model: list[object], bundles: dict, extras: dict) -
         images = bundles.get(str(image_id // 50), [])
         return "încorporată" if image_id % 50 < len(images) and images[image_id % 50] else "lipsă"
 
-    image = extras.get(str(index))
+    image = extras.get(str(model[19]))
     images = image if isinstance(image, list) else [image]
     for candidate in images:
         if not isinstance(candidate, str):
@@ -55,9 +46,16 @@ def image_status(index: int, model: list[object], bundles: dict, extras: dict) -
 
 def main() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
-    html = (ROOT / "index.html").read_text(encoding="utf-8")
-    bundles = read_assignment(html, "const EMBEDDED_BUNDLES=")
-    extras = read_assignment(html, "const EXTRA_IMAGES=")
+    bundles = {
+        path.stem: json.loads(path.read_text(encoding="utf-8"))
+        for path in (ROOT / "assets" / "image-bundles").glob("*.json")
+    }
+    extras = json.loads((ROOT / "data" / "image-fallbacks.json").read_text(encoding="utf-8"))
+    manifest = json.loads((ROOT / "data" / "phone-images.json").read_text(encoding="utf-8"))
+    for uid, record in manifest.get("images", {}).items():
+        previous = extras.get(uid)
+        previous = previous if isinstance(previous, list) else [previous] if previous else []
+        extras[uid] = [record["file"], *previous]
     sources = data.get("sources", {})
 
     fields: dict[str, list[str]] = defaultdict(list)
@@ -80,19 +78,24 @@ def main() -> None:
         if not is_film and (len(model) <= 6 or not model[6] or model[6] == "Necunoscută"):
             fields["formă cameră"].append(label)
         if len(model) <= 16 or not model[16]:
-            fields["tip ecran"].append(label)
+            fields["curbură ecran"].append(label)
 
-        named_source = f"{model[1]} — {model[18]}" if is_film and len(model) > 18 else str(model[1])
+        full_name = f"{model[0]} {model[1]}"
+        named_source = f"{full_name} — {model[18]}" if is_film and len(model) > 18 else full_name
         row_source = model[17] if len(model) > 17 and isinstance(model[17], str) and model[17].startswith("http") else None
-        if not row_source and not sources.get(named_source) and not sources.get(str(model[1])):
-            fields["sursă explicită (metadate)"].append(label)
+        if not row_source and not sources.get(named_source) and not sources.get(full_name) and not sources.get(str(model[1])):
+            fields["sursă explicită"].append(label)
 
         status = image_status(index, model, bundles, extras)
         image_counts[status] += 1
         if status == "lipsă":
             fields["fotografie"].append(label)
 
-        key = (model[0], model[1], model[3], model[14], model[17] if is_film else None,
+        # A shared brand/name/diagonal is not enough to call two records duplicates:
+        # variants can differ in body dimensions, cutout, or screen construction.
+        key = (model[0], model[1], model[3], model[4], model[5], model[6],
+               model[8], model[9], model[14], model[16],
+               model[17] if is_film else None,
                model[18] if is_film and len(model) > 18 else None)
         exact_keys[key].append(f"{label} [rândul {index}]")
 
@@ -107,12 +110,19 @@ def main() -> None:
         "| Verificare | Probleme |",
         "|---|---:|",
     ]
-    for field in ("diagonală", "lungime corp", "lățime corp", "lungime ecran", "lățime ecran",
-                  "formă cameră", "tip ecran", "sursă explicită (metadate)", "fotografie", "posibil duplicat"):
+    for field in ("diagonală", "lungime corp", "lățime corp",
+                  "formă cameră", "curbură ecran", "sursă explicită", "fotografie", "posibil duplicat"):
         lines.append(f"| {field} | {len(fields[field])} |")
-    lines.extend(["", "### Exemple de verificat"])
+    lines.extend([
+        "",
+        "Lungimea și lățimea corpului, diagonala, decupajul și curbura sunt folosite de potrivire. Dimensiunile fizice ale suprafeței active sunt informative și nu schimbă rezultatele.",
+        "",
+        f"**Dimensiuni ale suprafeței active lipsă:** {len(fields['lungime ecran'])} modele. Acest câmp este opțional pentru logica de compatibilitate.",
+        "",
+        "### Exemple de verificat",
+    ])
     any_findings = False
-    for field in ("lungime ecran", "lățime ecran", "tip ecran", "fotografie", "posibil duplicat"):
+    for field in ("formă cameră", "curbură ecran", "sursă explicită", "fotografie", "posibil duplicat"):
         names = list(dict.fromkeys(fields[field]))
         if not names:
             continue

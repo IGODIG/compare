@@ -2,35 +2,25 @@
 
 ## Adăugarea unui model
 
-Înainte să apară în site, înregistrează și verifică:
+Înainte să apară în site, verifică numele și piața Global/Europa, diagonala și dimensiunile corpului, forma decupajului, curbura ecranului, fotografia și sursele.
 
-- numele și varianta Global/Europa;
-- diagonala și dimensiunile corpului în milimetri;
-- tipul decupajului frontal și dacă ecranul este plat sau curbat;
-- fotografia modelului și sursa ei;
-- detaliile ecranului activ, dacă sunt disponibile.
+Fiecare rând din `data.json` are un ID stabil în câmpul `19`, de forma `m_` urmat de 12 caractere hexazecimale. Generează-l o singură dată și păstrează-l la editările viitoare. Relațiile din câmpurile `10` și `13`, grupele `g` și manifestele imaginilor folosesc acest ID, nu poziția telefonului în listă.
 
-Modelele doar anunțate, variantele exclusiv China și informațiile incomplete nu trebuie prezentate drept potriviri confirmate.
+Pentru o fotografie locală, salvează fișierul în `assets/phones/` și adaugă o intrare cu ID-ul modelului, numele fișierului și URL-ul sursei în `data/phone-images.json`. Pachetele principale de imagini din `assets/image-bundles/` nu trebuie reordonate sau renumerotate fără actualizarea ID-urilor de imagine din câmpul `7`.
 
-## Sincronizarea datelor
+## Verificări
 
-Pagina folosește o copie încorporată a `data.json`. După editarea JSON-ului, sincronizează și verifică:
+Rulează înainte de commit:
 
 ```bash
-python scripts/sync_embedded_data.py
 python scripts/validate_project.py
+node --test tests/matching.test.mjs
 ```
 
-Fotografiile sunt încorporate în `index.html`. Nu schimba `m[7]` către o fotografie care nu există în setul încorporat.
+Testele folosesc aceleași funcții din `matching.mjs` ca pagina și verifică pragurile, camera, curbura și ordinea rezultatelor.
+
+Pornește pagina cu un server local (`python -m http.server 8000`), apoi deschide `http://localhost:8000`. Pentru un singur fișier HTML, rulează `python scripts/build_standalone.py`; acesta generează `index-complet.html`.
 
 ## Modele descoperite automat
 
-Workflow-ul zilnic compară catalogul recent GSMArena cu modelele existente și pune rezultatele noi în `data/new-model-candidates.json`. Pull request-ul automat este doar o coadă de verificare. Completează sursele și toate câmpurile înainte să copiezi modelul în `data.json`.
-
-## Înainte de commit
-
-- `python scripts/validate_project.py` trece;
-- `data.json` și copia încorporată din `index.html` sunt identice;
-- pagina se deschide local și căutarea funcționează;
-- imaginile noi se încarcă;
-- mesajele „Confirmat” și „Probabil” reflectă corect datele disponibile.
+Scanarea lunară compară catalogul GSMArena și sursele oficiale. Pull request-ul automat este doar o coadă de verificare. Candidații nu intră în site până când datele și sursele nu sunt verificate.
