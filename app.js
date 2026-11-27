@@ -86,7 +86,7 @@ function cutFig(i){const m=D[i];return `<button type="button" class="cut-model" 
 function renderFilmDetail(i,push=true,noScroll=false){
   const m=D[i];CUR=i;main.className='det';setHeroMode(true);
   if(push){rememberRecent(i);location.hash='m'+i}
-  const near=sugg(m),interior=m[18]==='interior';
+  const near=[...new Map([...lv(m,'C'),...lv(m,'P'),...sugg(m)].map(candidate=>[candidate[0],candidate])).values()].filter(candidate=>isFilm(D[candidate[0]])&&D[candidate[0]][18]===m[18]&&candidate[0]!==i),interior=m[18]==='interior';
   const guidance=interior
     ?`<aside class="fold-guidance"><span class="ic" aria-hidden="true">!</span><div><strong>Folie hydrogel · ecran interior</strong><p>Păstrează folia preinstalată. Samsung recomandă înlocuirea la un service autorizat.</p><a href="https://www.samsung.com/us/support/answer/ANS10001589/" target="_blank" rel="noopener">Vezi recomandările Samsung ↗</a></div></aside>`
     :'<aside class="fold-guidance"><span class="ic" aria-hidden="true">!</span><div><strong>Folie hydrogel · ecran exterior</strong><p>Alege o folie decupată pentru modelul și ecranul exterior exact.</p></div></aside>';
@@ -96,7 +96,7 @@ function renderFilmDetail(i,push=true,noScroll=false){
         <div class="specs"><span class="spec"><small>Ecran</small> ${m[3]}″</span><span class="spec"><small>Dimensiune ecran</small> ${m[8]} × ${m[9]} mm</span><span class="spec"><small>Protecție</small> Folie hydrogel · ${interior?'interior':'exterior'}</span><span class="spec"><small>An</small> ${m[2]}</span></div>
       </div>
     </article>${guidance}
-    <section class="sec p"><header><h3>Pelicule apropiate după dimensiunea ecranului — de verificat</h3><span class="n">${near.length}</span></header><p>Acestea sunt doar candidate după diagonală, lățime și lungime. Nu sunt confirmări de compatibilitate. Verifică forma și pelicula exactă înainte de montare.</p><div class="gal">${near.length?near.map(x=>cw(i,x[0],card(x[0],'Protecție - Folie hydrogel',x[1],'b-p',null,deltaText(m,D[x[0]])))).join(''):'<p class="hint">Nu avem alte ecrane pliabile cu dimensiuni suficient de apropiate.</p>'}</div></section>
+    <section class="sec p"><header><h3>Pelicule apropiate după dimensiunea ecranului — de verificat</h3><span class="n">${near.length}</span></header><p>Acestea sunt doar candidate după diagonală, lățime și lungime. Nu sunt confirmări de compatibilitate. Verifică forma și pelicula exactă înainte de montare.</p><div class="gal">${near.length?near.map(x=>cw(i,x[0],card(x[0],'Protecție - Folie hydrogel','', 'b-p',null,deltaText(m,D[x[0]])))).join(''):'<p class="hint">Nu avem alte ecrane pliabile cu dimensiuni suficient de apropiate.</p>'}</div></section>
     <section class="sec probe"><h3>Ai probat altă peliculă pe ${esc(titleName(m))}?</h3><div class="pr"><input id="prm" list="allm" placeholder="pelicula de la… (ex: alt model)"><button class="vb ok" id="pr1">✓ Se potrivește</button><button class="vb no" id="pr0">✗ Nu se potrivește</button></div><p class="hint" id="prmsg">Votul se salvează în acest browser și nu se sincronizează cu alți consultanți.</p><datalist id="allm">${D.filter(euMarket).map(x=>`<option value="${esc(name(x))}">`).join('')}</datalist></section>`;
   if(!noScroll)window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -153,7 +153,7 @@ function renderNoi(){
   idx.sort((a,b)=>rk(D[b]).localeCompare(rk(D[a]))||D[a][1].localeCompare(D[b][1]));
   const lastAdd=D.reduce((a,m)=>m[11]>a?m[11]:a,'');
   const recentCutoff=new Date(Date.now()-31*864e5).toISOString().slice(0,10); const recent=idx.filter(i=>D[i][11]===lastAdd&&lastAdd>recentCutoff);
-  const conf=idx.filter(i=>lv(D[i],'C').some(x=>x[1]==='C')).length,sameSize=idx.filter(i=>lv(D[i],'C').some(x=>x[1]==='G')).length,films=idx.filter(i=>isFilm(D[i])).length,toCheck=idx.filter(i=>!isFilm(D[i])&&!lv(D[i],'C').length).length;
+  const phones=idx.filter(i=>!isFilm(D[i])&&D[i][16]!=='curbat'),conf=phones.filter(i=>lv(D[i],'C').length).length,sameSize=phones.filter(i=>lv(D[i],'C').some(x=>x[1]==='G')).length,films=idx.filter(i=>isFilm(D[i])).length,toCheck=phones.filter(i=>!lv(D[i],'C').length).length;
   const lbl=m=>m[12]?mo[+m[12].slice(5)]+' '+m[12].slice(0,4):String(m[2]);
   main.innerHTML=`<p class="hint">Modele lansate în 2025–2026: <b>${idx.length}</b> · confirmate <b>${conf}</b> (dintre care <b>${sameSize}</b> după dimensiuni și cameră) · fără confirmare <b>${toCheck}</b> · Protecție - Folie hydrogel <b>${films}</b>. Baza se verifică lunar; modelele apar după verificarea datelor${lastAdd?` (ultima actualizare: ${lastAdd})`:''}.</p>`+
   (recent.length?`<section class="sec c"><header><h3>Adăugate recent</h3><span class="n">${recent.length}</span></header><div class="gal">${recent.map(i=>{const m=D[i],c=lv(m,'C'),p=lv(m,'P');return isFilm(m)||m[16]==='curbat'?card(i,'Protecție - Folie hydrogel','','b-p'):c.some(x=>x[1]==='G')?card(i,'✓ Confirmat după dimensiuni','Regula: corp ±0,5 mm și cameră potrivită','b-c'):card(i,c.length?'✓ Confirmat':p.length?'Probabil · probează fizic':'Fără confirmare','',p.length?'b-p':'b-z')}).join('')}</div></section>`:'')+
@@ -162,7 +162,7 @@ function renderNoi(){
 }
 function render(){main.className='';main.setAttribute('aria-busy','false');tab==='cauta'?renderSearch():tab==='noi'?renderNoi():tab==='sticle'?renderSticle():renderInfo()}
 new MutationObserver(()=>hydrate(main)).observe(main,{childList:true,subtree:true});
-function setTabUI(t){for(const b of ['cauta','noi','sticle','info']){const selected=b===t,button=$('#t-'+b);button.setAttribute('aria-selected',selected);button.tabIndex=selected?0:-1}main.setAttribute('aria-labelledby','t-'+t)}
+function setTabUI(t){for(const b of ['cauta','noi','sticle','info']){const selected=b===t,button=$('#t-'+b);button.setAttribute('aria-selected',selected);button.tabIndex=selected?0:-1}main.setAttribute('aria-labelledby','t-'+t);const nav=$('.tabs'),active=$('#t-'+t);if(nav&&active){const nr=nav.getBoundingClientRect(),ar=active.getBoundingClientRect();nav.scrollLeft=Math.max(0,nav.scrollLeft+ar.left-nr.left-8)}}
 function setTab(t){tab=t;limit=60;setTabUI(t);if(location.hash)history.replaceState(null,'',' ');render()}
 $('#brands').innerHTML=BR.map(b=>`<button class="chip" aria-pressed="${b==='Toate'}" data-b="${b}">${b}</button>`).join('');
 $('#brands').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;brand=b.dataset.b;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));limit=60;if(tab==='info')setTab('cauta');else render()});
