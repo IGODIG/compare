@@ -135,7 +135,7 @@ details.sec>div{margin-top:14px}
 @media(max-width:720px){nav.tabs{justify-content:flex-start;gap:2px;scrollbar-width:thin;scrollbar-color:#45464b transparent}nav.tabs button{margin-right:8px}}
 
 .card .tx .tb{display:none}.det .card .tx .tb{display:inline-block}
-@media(max-width:720px){.sheet{grid-template-columns:1fr}.stage img{width:118px;height:250px}.hero h1{font-size:26px}.card .ph{height:160px}.card .ph img{width:72px;height:146px}}
+@media(max-width:720px){.sheet{grid-template-columns:1fr}.det .sheet{grid-template-columns:minmax(0,1fr)}.det .stage{min-height:220px;padding:38px 16px 18px}.det .stage img{width:auto;height:176px;max-width:100%}.det .info{padding:18px}.hero h1{font-size:26px}.card .ph{height:160px}.card .ph img{width:72px;height:146px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media(prefers-reduced-motion:no-preference){.sheet{animation:in .3s ease-out}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
 
