@@ -43,6 +43,7 @@ Detalii: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   ├── build_standalone.py         # Generează index-complet.html la cerere
 │   ├── discover_new_models.py
 │   ├── discover_official_models.py
+│   ├── discover_moldova_retailers.py
 │   └── validate_project.py
 ├── tests/matching.test.mjs         # Regresii pentru reguli și ordinea rezultatelor
 └── .github/workflows/
@@ -76,7 +77,7 @@ Pentru o copie HTML autonomă, rulează `python scripts/build_standalone.py`. Ac
 
 Adaugă modelul verificat în `data.json` cu un ID stabil nou (`m_` și 12 cifre hexazecimale). Relațiile din câmpurile `10`, `13` și grupele `g` folosesc ID-uri stabile. Înregistrează în `data/phone-images.json` numai imagini cu telefonul văzut din față; redimensionează-le pentru interfață și păstrează fișierele locale sub 600 KB. Decupajele pentru fotografiile compozite se salvează în `assets/phones/front/`. GitHub Actions verifică dimensiunea imaginilor, iar GitHub Pages servește direct fișierele statice.
 
-Scanarea lunară compară sursele oficiale și GSMArena și deschide un pull request cu modele-candidat. Candidații nu apar pe site înainte de verificarea dimensiunilor, pieței, camerei și fotografiei. Auditul săptămânal verifică imaginile Oppo și OnePlus Global.
+Scanarea lunară compară sursele oficiale, GSMArena și cataloagele Orange Moldova, Moldcell și Darwin, apoi deschide un pull request cu modele-candidat. Magazinele locale indică disponibilitatea și relevanța pe piața Moldovei; ele nu sunt surse de dimensiuni sau de confirmare a compatibilității. Candidații nu apar pe site înainte de verificarea pieței exacte, dimensiunilor, camerei, formei ecranului și fotografiei. Auditul săptămânal verifică imaginile Oppo și OnePlus Global.
 
 Pentru ca workflow-ul să deschidă pull request-uri, repository-ul trebuie să permită GitHub Actions să creeze pull request-uri în **Settings → Actions → General**.
 

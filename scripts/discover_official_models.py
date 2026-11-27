@@ -38,7 +38,7 @@ PAGES = {
 }
 
 PATTERNS = {
-    "Samsung": re.compile(r"\bGalaxy\s+(?:S|Z|A|M|F|XCover)\s*\d{1,3}[A-Za-z]?(?:\s+(?:5G|FE|Ultra|Plus|\+|Pro|Edge|Fold|Flip|Classic|Core|Lite)){0,4}\b", re.I),
+    "Samsung": re.compile(r"\bGalaxy\s+(?:S|Z|A|M|F|XCover)\s*\d{1,3}[A-Za-z]?(?:\s*\+(?:\s*5G)?|\s+(?:5G|FE|Ultra|Plus|Pro|Edge|Fold|Flip|Classic|Core|Lite)){0,4}(?![A-Za-z0-9])", re.I),
     "Apple": re.compile(r"\biPhone\s+(?:Air|SE|\d{1,2})(?:\s+(?:Pro|Max|Plus|mini|e)){0,3}\b", re.I),
     "Xiaomi": re.compile(r"\b(?:Xiaomi\s+\d{1,2}[A-Za-z]?(?:\s+(?:Pro|Max|Ultra|T|Lite|Civi)){0,3}|Redmi\s+(?:Note\s+)?[A-Z]?\d{1,3}[A-Za-z]?(?:\s+(?:Pro|Max|Plus|Ultra|5G|4G|Turbo)){0,4}|POCO\s+[A-Z]?\d{1,2}[A-Za-z]?(?:\s+(?:Pro|Max|Ultra|Plus|5G|4G)){0,3})\b", re.I),
     "Oppo": re.compile(r"\bOPPO\s+(?:Find\s+[NX]\s*\d{1,2}[A-Za-z]?(?:\s+(?:Pro|Max|Ultra|Plus)){0,3}|Reno\s*\d{1,2}[A-Za-z]?(?:\s+(?:Pro|Max|Ultra|Plus|F|FS|Lite|5G|4G)){0,4}|[AFK]\s*\d{1,3}[A-Za-z]?(?:\s+(?:Pro|Max|Plus|Ultra|Lite|5G|4G)){0,4})\b", re.I),

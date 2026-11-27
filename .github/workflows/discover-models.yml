@@ -36,6 +36,9 @@ jobs:
       - name: Scan monthly official sources
         run: python scripts/discover_official_models.py --group all
 
+      - name: Scan Moldova phone retailers
+        run: python scripts/discover_moldova_retailers.py
+
       - name: Validate candidate JSON and site data
         run: python scripts/validate_project.py
 

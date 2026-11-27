@@ -27,4 +27,4 @@ Pornește pagina cu un server local (`python -m http.server 8000`), apoi deschid
 
 ## Modele descoperite automat
 
-Scanarea lunară compară catalogul GSMArena și sursele oficiale. Pull request-ul automat este doar o coadă de verificare. Candidații nu intră în site până când datele și sursele nu sunt verificate.
+Scanarea lunară compară catalogul GSMArena, sursele oficiale și cataloagele Orange Moldova, Moldcell și Darwin. Magazinele locale sunt folosite doar pentru a identifica modele relevante și regiunea de vânzare; nu confirmă dimensiuni sau compatibilitatea sticlei. Pull request-ul automat este doar o coadă de verificare. Candidații nu intră în site până când datele și sursele tehnice nu sunt verificate.
