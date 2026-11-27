@@ -79,6 +79,8 @@ def main() -> None:
         raise SystemExit("Manifestul de imagini conține un identificator de model necunoscut.")
     local_images: set[Path] = set()
     for uid, record in image_records.items():
+        if record.get("view") != "front":
+            raise SystemExit(f"Fotografia pentru {uid} trebuie să fie marcată și verificată ca vedere frontală.")
         image_path = (ROOT / record.get("file", "")).resolve()
         if ROOT.resolve() not in image_path.parents or not image_path.is_file():
             raise SystemExit(f"Imagine locală lipsă pentru {uid}: {record.get('file')}")

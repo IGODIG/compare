@@ -28,7 +28,7 @@ Detalii: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 │   ├── compatibility-evidence.json # Dovezi încărcate la deschiderea unei fișe
 │   ├── image-fallbacks.json        # Imagini alternative indexate după ID
 │   ├── model-codes.json             # Coduri de model căutabile, de ex. SM-G988B
-│   ├── phone-images.json           # Fișiere locale și sursele lor
+│   ├── phone-images.json           # Imagini frontale locale și sursele lor
 │   └── new-model-candidates.json   # Candidați încă neverificați
 ├── assets/
 │   ├── image-bundles/              # Pachete de imagini încărcate la cerere
@@ -69,7 +69,7 @@ Pentru o copie HTML autonomă, rulează `python scripts/build_standalone.py`. Ac
 
 ## Actualizare și publicare
 
-Adaugă modelul verificat în `data.json` cu un ID stabil nou (`m_` și 12 cifre hexazecimale). Relațiile din câmpurile `10`, `13` și grupele `g` folosesc ID-uri stabile. Înregistrează pozele locale și sursele în `data/phone-images.json`. GitHub Pages servește direct fișierele statice; nu mai este nevoie să încorporezi baza sau imaginile în `index.html`.
+Adaugă modelul verificat în `data.json` cu un ID stabil nou (`m_` și 12 cifre hexazecimale). Relațiile din câmpurile `10`, `13` și grupele `g` folosesc ID-uri stabile. Înregistrează în `data/phone-images.json` numai imagini cu telefonul văzut din față; decupajele pentru fotografiile compozite se salvează în `assets/phones/front/`. GitHub Pages servește direct fișierele statice; nu mai este nevoie să încorporezi baza sau imaginile în `index.html`.
 
 Scanarea lunară compară sursele oficiale și GSMArena și deschide un pull request cu modele-candidat. Candidații nu apar pe site înainte de verificarea dimensiunilor, pieței, camerei și fotografiei. Auditul săptămânal verifică imaginile Oppo și OnePlus Global.
 

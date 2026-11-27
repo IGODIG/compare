@@ -3,233 +3,473 @@
   "images": {
     "m_77ce0167e9ef": {
       "model": "Oppo A5 2020",
-      "file": "assets/phones/1040.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5-2020.jpg"
+      "file": "assets/phones/front/1040.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5-2020.jpg",
+      "original_file": "assets/phones/1040.jpg",
+      "view": "front"
     },
     "m_75c31aaa5234": {
       "model": "Oppo A9 2020",
-      "file": "assets/phones/1041.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a9-2020-.jpg"
+      "file": "assets/phones/front/1041.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a9-2020-.jpg",
+      "original_file": "assets/phones/1041.jpg",
+      "view": "front"
     },
     "m_a203c08cf0e1": {
       "model": "Oppo A18",
-      "file": "assets/phones/1042.webp",
-      "source_url": "https://d33i50qtfold6x.cloudfront.net/WX20220914-100950%402x.png/20240124/11-15-33_65b0e345222ec_.webp"
+      "file": "assets/phones/front/1042.png",
+      "source_url": "https://d33i50qtfold6x.cloudfront.net/WX20220914-100950%402x.png/20240124/11-15-33_65b0e345222ec_.webp",
+      "original_file": "assets/phones/1042.webp",
+      "view": "front"
     },
     "m_b2692e415d4d": {
       "model": "Oppo A38",
-      "file": "assets/phones/1043.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a38.jpg"
+      "file": "assets/phones/front/1043.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a38.jpg",
+      "original_file": "assets/phones/1043.jpg",
+      "view": "front"
     },
     "m_57e1f353dd23": {
       "model": "Oppo A57e",
-      "file": "assets/phones/1044.jpg",
-      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-a57e-3.jpg"
+      "file": "assets/phones/front/1044.jpg",
+      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-a57e-3.jpg",
+      "original_file": "assets/phones/1044.jpg",
+      "view": "front"
     },
     "m_fb3686c22e2c": {
       "model": "Oppo A59",
-      "file": "assets/phones/1045.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a59.jpg"
+      "file": "assets/phones/front/1045.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a59.jpg",
+      "original_file": "assets/phones/1045.jpg",
+      "view": "front"
     },
     "m_93799d0f7a68": {
       "model": "OnePlus Nord N300",
-      "file": "assets/phones/1056.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n300-5g.jpg"
+      "file": "assets/phones/front/1056.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n300-5g.jpg",
+      "original_file": "assets/phones/1056.jpg",
+      "view": "front"
     },
     "m_f22e77f09611": {
       "model": "OnePlus Nord N20 SE",
-      "file": "assets/phones/1057.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n20-se.jpg"
+      "file": "assets/phones/front/1057.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n20-se.jpg",
+      "original_file": "assets/phones/1057.jpg",
+      "view": "front"
     },
     "m_0541c0c6718e": {
       "model": "Oppo A33 2020",
-      "file": "assets/phones/1060.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a33.jpg"
+      "file": "assets/phones/front/1060.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a33.jpg",
+      "original_file": "assets/phones/1060.jpg",
+      "view": "front"
     },
     "m_d7192640b883": {
       "model": "Oppo Reno4 Z 5G",
-      "file": "assets/phones/1064.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a92s.jpg"
+      "file": "assets/phones/front/1064.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a92s.jpg",
+      "original_file": "assets/phones/1064.jpg",
+      "view": "front"
     },
     "m_fa3442766dfd": {
       "model": "Oppo A5 Energy",
-      "file": "assets/phones/1093.jpg",
-      "source_url": "https://cdn.mobilecity.vn/mobilecity-vn/images/2025/03/oppo-a5-enregy-mau-sac.jpg"
+      "file": "assets/phones/front/oppo-a5-energy.png",
+      "source_url": "https://www.gsmarena.com/oppo_a5_energy-13735.php",
+      "original_file": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5-yough.jpg",
+      "view": "front"
     },
     "m_69323bc25018": {
       "model": "Oppo A5 Pro 4G",
-      "file": "assets/phones/1094.webp",
-      "source_url": "https://assets.oppostore.it/Cover-1744465586949.webp"
+      "file": "assets/phones/front/1094.png",
+      "source_url": "https://assets.oppostore.it/Cover-1744465586949.webp",
+      "original_file": "assets/phones/1094.webp",
+      "view": "front"
     },
     "m_8c7d0f9f8d2b": {
       "model": "Oppo A5x 4G",
-      "file": "assets/phones/1095.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5x.jpg"
+      "file": "assets/phones/front/1095.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a5x.jpg",
+      "original_file": "assets/phones/1095.jpg",
+      "view": "front"
     },
     "m_30a7984e0dff": {
       "model": "Oppo A58 4G",
-      "file": "assets/phones/1096.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a58-4g.jpg"
+      "file": "assets/phones/front/1096.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a58-4g.jpg",
+      "original_file": "assets/phones/1096.jpg",
+      "view": "front"
     },
     "m_14621172b0ed": {
       "model": "Oppo Reno4 F",
-      "file": "assets/phones/1130.jpg",
-      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-reno4-f-4.jpg"
+      "file": "assets/phones/front/1130.jpg",
+      "source_url": "https://cdn.kalvo.com/uploads/img/gallery/oppo-reno4-f-4.jpg",
+      "original_file": "assets/phones/1130.jpg",
+      "view": "front"
     },
     "m_3e665bd3aed9": {
       "model": "Oppo Reno 15fs",
-      "file": "assets/phones/1138.jpg",
-      "source_url": "https://i.gadgets360cdn.com/products/large/oppo-reno-15-fs-5g-oppo-db-651x800-1768983270.jpg?downsize=%2A%3A180"
+      "file": "assets/phones/front/1138.jpg",
+      "source_url": "https://i.gadgets360cdn.com/products/large/oppo-reno-15-fs-5g-oppo-db-651x800-1768983270.jpg?downsize=%2A%3A180",
+      "original_file": "assets/phones/1138.jpg",
+      "view": "front"
     },
     "m_a311ce5e6a20": {
       "model": "Oppo A6 Pro 4G / A6 Pro 5G (Global)",
-      "file": "assets/phones/1143.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-pro-4g.jpg"
+      "file": "assets/phones/front/1143.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-pro-4g.jpg",
+      "original_file": "assets/phones/1143.jpg",
+      "view": "front"
     },
     "m_26d4fbefedd8": {
       "model": "Oppo A6c 4G",
-      "file": "assets/phones/1149.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6c.jpg"
+      "file": "assets/phones/front/1149.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6c.jpg",
+      "original_file": "assets/phones/1149.jpg",
+      "view": "front"
     },
     "m_c37169901a68": {
       "model": "Oppo A6 4G",
-      "file": "assets/phones/1151.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-4g.jpg"
+      "file": "assets/phones/front/1151.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6-4g.jpg",
+      "original_file": "assets/phones/1151.jpg",
+      "view": "front"
     },
     "m_30b84be91322": {
       "model": "Oppo A6x 5G",
-      "file": "assets/phones/1152.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6x-5g.jpg"
+      "file": "assets/phones/front/1152.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6x-5g.jpg",
+      "original_file": "assets/phones/1152.jpg",
+      "view": "front"
     },
     "m_e37af37f68b3": {
       "model": "Oppo A6s 5G / A6s 4G",
-      "file": "assets/phones/1153.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6s.jpg"
+      "file": "assets/phones/front/1153.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-a6s.jpg",
+      "original_file": "assets/phones/1153.jpg",
+      "view": "front"
     },
     "m_e45e6af75e75": {
       "model": "Oppo Reno5 Lite",
-      "file": "assets/phones/1163.jpg",
-      "source_url": "https://fdn.gsmarena.com/imgroot/news/21/03/oppo-reno-5-lite-ofic/-1200/gsmarena_004.jpg"
+      "file": "assets/phones/front/1163.jpg",
+      "source_url": "https://fdn.gsmarena.com/imgroot/news/21/03/oppo-reno-5-lite-ofic/-1200/gsmarena_004.jpg",
+      "original_file": "assets/phones/1163.jpg",
+      "view": "front"
     },
     "m_16210ae66746": {
       "model": "Oppo Reno 7z 5G",
-      "file": "assets/phones/1164.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-reno7-z-5g.jpg"
+      "file": "assets/phones/front/1164.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oppo-reno7-z-5g.jpg",
+      "original_file": "assets/phones/1164.jpg",
+      "view": "front"
     },
     "m_59d1e08fcdb3": {
       "model": "Oppo Reno 7 4G",
-      "file": "assets/phones/1165.png",
-      "source_url": "https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno7_4g/listpage/listpage-SunsetOrange-427_600-pc.png"
+      "file": "assets/phones/front/1165.png",
+      "source_url": "https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno7_4g/listpage/listpage-SunsetOrange-427_600-pc.png",
+      "original_file": "assets/phones/1165.png",
+      "view": "front"
     },
     "m_8dfe846d0627": {
       "model": "Oppo Reno7 Lite",
-      "file": "assets/phones/1166.png",
-      "source_url": "https://cdn.beebom.com/mobile/oppo-reno7-lite/oppo-reno7-lite-front-back-design%20%282%29.png"
+      "file": "assets/phones/front/1166.png",
+      "source_url": "https://cdn.beebom.com/mobile/oppo-reno7-lite/oppo-reno7-lite-front-back-design%20%282%29.png",
+      "original_file": "assets/phones/1166.png",
+      "view": "front"
     },
     "m_33eb9dca0864": {
       "model": "OnePlus 11",
-      "file": "assets/phones/1169.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-11.jpg"
+      "file": "assets/phones/front/1169.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-11.jpg",
+      "original_file": "assets/phones/1169.jpg",
+      "view": "front"
     },
     "m_c1dc52c2b3cc": {
       "model": "OnePlus 12",
-      "file": "assets/phones/1170.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-12.jpg"
+      "file": "assets/phones/front/1170.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-12.jpg",
+      "original_file": "assets/phones/1170.jpg",
+      "view": "front"
     },
     "m_6fd7e1ac063b": {
       "model": "OnePlus 13",
-      "file": "assets/phones/1171.jpg",
-      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-13.jpg"
+      "file": "assets/phones/front/1171.jpg",
+      "source_url": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-13.jpg",
+      "original_file": "assets/phones/1171.jpg",
+      "view": "front"
     },
     "m_1f095864ad48": {
       "model": "OnePlus 15",
-      "file": "assets/phones/1172.jpg",
-      "source_url": "https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/original/one-plus/494742151/0/Z0esG6YSXs-dluhEu72wp-OnePlusOneplus15-MP-494742151-i-1.jpg"
+      "file": "assets/phones/front/1172.jpg",
+      "source_url": "https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/original/one-plus/494742151/0/Z0esG6YSXs-dluhEu72wp-OnePlusOneplus15-MP-494742151-i-1.jpg",
+      "original_file": "assets/phones/1172.jpg",
+      "view": "front"
     },
     "m_1fe7adbad545": {
       "model": "OnePlus Nord 3",
-      "file": "assets/phones/1173.png",
-      "source_url": "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/vitamin/vitamin-spec-black.png"
+      "file": "assets/phones/front/1173.png",
+      "source_url": "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/vitamin/vitamin-spec-black.png",
+      "original_file": "assets/phones/1173.png",
+      "view": "front"
     },
     "m_f9909da81bf1": {
       "model": "OnePlus Nord 4",
-      "file": "assets/phones/1174.png",
-      "source_url": "https://images.biggeek.ru/1/870/970e/28182-7738bb6170dd07822e3bf9ae62a30e00a5a%402x.png"
+      "file": "assets/phones/front/1174.png",
+      "source_url": "https://images.biggeek.ru/1/870/970e/28182-7738bb6170dd07822e3bf9ae62a30e00a5a%402x.png",
+      "original_file": "assets/phones/1174.png",
+      "view": "front"
     },
     "m_cfb75b51285a": {
       "model": "OnePlus Nord 5",
-      "file": "assets/phones/1175.webp",
-      "source_url": "https://partneroteszt.cdn.shoprenter.hu/custom/partneroteszt/image/data/op_n5_blue.jpg.webp?lastmod=1760289961.1672309585"
+      "file": "assets/phones/front/1175.png",
+      "source_url": "https://partneroteszt.cdn.shoprenter.hu/custom/partneroteszt/image/data/op_n5_blue.jpg.webp?lastmod=1760289961.1672309585",
+      "original_file": "assets/phones/1175.webp",
+      "view": "front"
     },
     "m_290c923de3f5": {
       "model": "OnePlus Nord CE5",
-      "file": "assets/phones/1176.png",
-      "source_url": "https://image01-in.oneplus.net/media/202507/03/e21d33b2feafabb0688027560a6c8f66.png"
+      "file": "assets/phones/front/1176.png",
+      "source_url": "https://image01-in.oneplus.net/media/202507/03/e21d33b2feafabb0688027560a6c8f66.png",
+      "original_file": "assets/phones/1176.png",
+      "view": "front"
     },
     "m_13d33c337bf6": {
       "model": "Redmi Note 17 Pro Max 5G",
-      "file": "assets/phones/1202.png",
-      "source_url": "https://i02.appmifile.com/323_operator_sg/24/08/2026/1ef9c7e6bbab71ad6bf32f738066bf12.png"
+      "file": "assets/phones/front/1202.png",
+      "source_url": "https://i02.appmifile.com/323_operator_sg/24/08/2026/1ef9c7e6bbab71ad6bf32f738066bf12.png",
+      "original_file": "assets/phones/1202.png",
+      "view": "front"
     },
     "m_f234d5e8c804": {
       "model": "Redmi Note 17 Pro 5G",
-      "file": "assets/phones/1203.png",
-      "source_url": "https://i02.appmifile.com/26_operator_sg/24/08/2026/ab065bd494998d05f086324558ce4935.png"
+      "file": "assets/phones/front/1203.png",
+      "source_url": "https://i02.appmifile.com/26_operator_sg/24/08/2026/ab065bd494998d05f086324558ce4935.png",
+      "original_file": "assets/phones/1203.png",
+      "view": "front"
     },
     "m_dda6e5de0833": {
       "model": "Redmi Note 17 5G",
-      "file": "assets/phones/1204.png",
-      "source_url": "https://i02.appmifile.com/433_operator_sg/04/08/2026/61b6109d932fa6ae924f0f1bea199fe4.png"
+      "file": "assets/phones/front/1204.png",
+      "source_url": "https://i02.appmifile.com/433_operator_sg/04/08/2026/61b6109d932fa6ae924f0f1bea199fe4.png",
+      "original_file": "assets/phones/1204.png",
+      "view": "front"
     },
     "m_cc1c64b3c173": {
       "model": "Redmi 17",
-      "file": "assets/phones/1205.png",
-      "source_url": "https://i02.appmifile.com/396_operator_sg/22/07/2026/2215d12b7d0dc2ad986d9643c570ad36.png"
+      "file": "assets/phones/front/1205.png",
+      "source_url": "https://i02.appmifile.com/396_operator_sg/22/07/2026/2215d12b7d0dc2ad986d9643c570ad36.png",
+      "original_file": "assets/phones/1205.png",
+      "view": "front"
     },
     "m_310714fba510": {
       "model": "Redmi Note 15 Pro",
-      "file": "assets/phones/1206.png",
-      "source_url": "https://i02.appmifile.com/47_operator_sg/19/12/2025/5e434dcb9f897ee5791cc019ceb831bc.png"
+      "file": "assets/phones/front/1206.png",
+      "source_url": "https://i02.appmifile.com/47_operator_sg/19/12/2025/5e434dcb9f897ee5791cc019ceb831bc.png",
+      "original_file": "assets/phones/1206.png",
+      "view": "front"
     },
     "m_c75fd2292574": {
       "model": "POCO F9 Ultra",
-      "file": "assets/phones/1207.png",
-      "source_url": "https://i02.appmifile.com/545_operator_sg/15/08/2026/66a9735335fd7a6b04318ac96e917565.png"
+      "file": "assets/phones/front/1207.png",
+      "source_url": "https://i02.appmifile.com/545_operator_sg/15/08/2026/66a9735335fd7a6b04318ac96e917565.png",
+      "original_file": "assets/phones/1207.png",
+      "view": "front"
     },
     "m_956661554e85": {
       "model": "POCO F9 Pro",
-      "file": "assets/phones/1208.png",
-      "source_url": "https://i02.appmifile.com/248_operator_sg/15/08/2026/2a9cdef4193cbe5ac983a485492cc7e4.png"
+      "file": "assets/phones/front/1208.png",
+      "source_url": "https://i02.appmifile.com/248_operator_sg/15/08/2026/2a9cdef4193cbe5ac983a485492cc7e4.png",
+      "original_file": "assets/phones/1208.png",
+      "view": "front"
     },
     "m_e12339df340e": {
       "model": "POCO X8 Pro",
-      "file": "assets/phones/1209.png",
-      "source_url": "https://i02.appmifile.com/864_operator_sg/25/05/2026/831c2a6a5d280720bf6544a34ce09b17.png"
+      "file": "assets/phones/front/1209.png",
+      "source_url": "https://i02.appmifile.com/864_operator_sg/25/05/2026/831c2a6a5d280720bf6544a34ce09b17.png",
+      "original_file": "assets/phones/1209.png",
+      "view": "front"
     },
     "m_bf97bbba5bb6": {
       "model": "POCO F8 Ultra",
-      "file": "assets/phones/1210.png",
-      "source_url": "https://i02.appmifile.com/869_operator_sg/17/11/2025/b0fc8559de0f1379aa5f181792a6c40a.png"
+      "file": "assets/phones/front/1210.png",
+      "source_url": "https://i02.appmifile.com/869_operator_sg/17/11/2025/b0fc8559de0f1379aa5f181792a6c40a.png",
+      "original_file": "assets/phones/1210.png",
+      "view": "front"
     },
     "m_496c3eb9edbb": {
       "model": "POCO F8 Pro",
-      "file": "assets/phones/1211.png",
-      "source_url": "https://i02.appmifile.com/550_operator_sg/16/11/2025/2b8e8a7404eee32e1034bce875893472.png"
+      "file": "assets/phones/front/1211.png",
+      "source_url": "https://i02.appmifile.com/550_operator_sg/16/11/2025/2b8e8a7404eee32e1034bce875893472.png",
+      "original_file": "assets/phones/1211.png",
+      "view": "front"
     },
     "m_1e6c296be98c": {
       "model": "Find N6 — interior",
-      "file": "assets/phones/find-n6.png",
-      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png"
+      "file": "assets/phones/front/find-n6.png",
+      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png",
+      "original_file": "assets/phones/find-n6.png",
+      "view": "front"
     },
     "m_9f3fa2a7e9a9": {
       "model": "Find N6 — exterior",
-      "file": "assets/phones/find-n6.png",
-      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png"
+      "file": "assets/phones/front/find-n6.png",
+      "source_url": "https://www.oppo.com/content/dam/oppo_com/common/mkt/v2-2/find-n6-en/specs/tai-orange.png",
+      "original_file": "assets/phones/find-n6.png",
+      "view": "front"
     },
     "m_2c0f63999e53": {
       "model": "HONOR X7e Plus",
-      "file": "assets/phones/1214.png",
-      "source_url": "https://www-file.honor.com/content/dam/honor/common/product-list/product-series/honor-x7e-plus/honor-x7e-plus-id-gold-back.png"
+      "file": "assets/phones/front/honor-x7e-plus-front.jpg",
+      "source_url": "https://www.gsmchoice.com/en/catalogue/honor/x7eplus5g/",
+      "original_file": "assets/phones/1214.png",
+      "view": "front"
+    },
+    "m_45edbf35e877": {
+      "model": "Xiaomi Mi 15T 5G",
+      "file": "assets/phones/front/xiaomi-mi-15t-front.webp",
+      "source_url": "https://mi.ua/ua/products/mobile/xiaomi-15t-12-512gb-black.html",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_b0c7708500a9": {
+      "model": "Xiaomi Mi 10S 5G",
+      "file": "assets/phones/front/xiaomi-mi-10s-front.jpg",
+      "source_url": "https://product.pconline.com.cn/mobile/miui/1367207.html",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_b17d9e0d6511": {
+      "model": "Xiaomi Poco X2 / Redmi K30",
+      "file": "assets/phones/front/xiaomi-poco-x2-front.jpg",
+      "source_url": "https://www.phonearena.com/phones/Xiaomi-Poco-X2_id11348",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_83b8d40ea4ff": {
+      "model": "Oppo A60 4G",
+      "file": "assets/phones/front/oppo-a60-4g-front.jpg",
+      "source_url": "https://www.mwave.com.au/product/oppo-a60-4g-256gb-smartphone-midnight-purple-ac94259",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_ca67e1599808": {
+      "model": "Oppo A79 5G",
+      "file": "assets/phones/front/oppo-a79-5g-front.jpg",
+      "source_url": "https://gadgetsnow.indiatimes.com/mobile-phones/oppo-a79-5g",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_ba2f10903521": {
+      "model": "Honor 9X Lite",
+      "file": "assets/phones/front/honor-9x-lite-front.jpg",
+      "source_url": "https://www.notebooksbilliger.de/honor%2B9x%2Blite%2B128gb%2Bdual%2Bsim%2Bemerald%2Bgreen%2B661205",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_598e6b93186b": {
+      "model": "Honor X8 5G Premium",
+      "file": "assets/phones/front/honor-x8-5g-front.jpg",
+      "source_url": "https://www.tel2u.com/telefono-movil/honor-x8-6-55-6gb-128gb-8mp-48mp-5g-ds-midnight-black-6936520812202-2422206.html",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_be64220a29bc": {
+      "model": "Oppo A16e",
+      "file": "assets/phones/front/oppo-a16e-front.png",
+      "source_url": "https://www.croma.com/oppo-a16e-3gb-ram-32gb-midnight-black-/p/250610",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_79cf6648a64c": {
+      "model": "Honor 50 Pro 5G",
+      "file": "assets/phones/front/honor-50-pro-front.png",
+      "source_url": "https://www.inside-digital.de/handys/honor-50-pro",
+      "view": "front"
+    },
+    "m_ad2be98e9903": {
+      "model": "Xiaomi Poco F3 GT 5G / Redmi K40 Game Enhanced Edition 5G / Redmi K40 Game",
+      "file": "assets/phones/front/xiaomi-poco-f3-gt-front.jpg",
+      "source_url": "https://www.gadgets360.com/poco-f3-gt-price-in-india-101789",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_e609ae6050f5": {
+      "model": "Xiaomi Redmi Note 6 Pro",
+      "file": "assets/phones/front/xiaomi-redmi-note-6-pro-front.jpg",
+      "source_url": "https://www.phonearena.com/phones/Xiaomi-Redmi-Note-6-Pro_id11056",
+      "original_file": "",
+      "view": "front"
+    },
+    "m_6740b80ec2a0": {
+      "model": "Honor 90 Smart",
+      "file": "assets/phones/front/honor-90-smart-front.webp",
+      "source_url": "https://www.honor.com/uk/phones/honor-90-smart-5g/buy/",
+      "view": "front"
+    },
+    "m_210178d4caa2": {
+      "model": "Oppo A7n",
+      "file": "assets/phones/front/oppo-a7n-front.jpg",
+      "source_url": "https://yuvo.com.br/celular-smartphone/oppo-a7n",
+      "view": "front"
+    },
+    "m_f1ee99760299": {
+      "model": "Honor X9 4G",
+      "file": "assets/phones/front/honor-x9-4g-front.jpg",
+      "source_url": "https://lite-mobile.ru/smartfon-honor-x9-8-128-cvet-ocean-blue",
+      "view": "front"
+    },
+    "m_e7add1dc8851": {
+      "model": "Samsung Galaxy A40s",
+      "file": "assets/phones/front/samsung-galaxy-a40s-front.jpg",
+      "source_url": "https://www.mobilissimo.ro/telefoane/samsung/galaxy-a40s",
+      "view": "front"
+    },
+    "m_e53885c8a9f3": {
+      "model": "Samsung Galaxy A70s",
+      "file": "assets/phones/front/samsung-galaxy-a70s-front.jpg",
+      "source_url": "https://www.minto.co.in/Samsung/Galaxy-A70s-price",
+      "view": "front"
+    },
+    "m_aabbcec61810": {
+      "model": "Xiaomi Mi A3 / Mi CC9e",
+      "file": "assets/phones/front/xiaomi-mi-a3-front.webp",
+      "source_url": "https://www.allo.ua/ua/products/mobile/xiaomi-mi-a3-4-64gb-black.html",
+      "view": "front"
+    },
+    "m_5467bea43909": {
+      "model": "Xiaomi Mi Mix 3 5G",
+      "file": "assets/phones/front/xiaomi-mi-mix-3-5g-front.jpg",
+      "source_url": "https://www.notebooksbilliger.de/xiaomi%2Bmi%2Bmix%2B3%2B5g%2B128gb%2Bschwarz%2Beu%2B646533",
+      "view": "front"
+    },
+    "m_66022e19704a": {
+      "model": "Xiaomi Mi 10 Lite Zoom 5G",
+      "file": "assets/phones/front/xiaomi-mi-10-lite-zoom-front.png",
+      "source_url": "https://www.orange.pl/esklep/smartfony/xiaomi/xiaomi-mi-10-lite-5g-6-64gb",
+      "view": "front"
+    },
+    "m_c6319f5e1f7d": {
+      "model": "Honor 9S",
+      "file": "assets/phones/front/honor-9s-front.jpg",
+      "source_url": "https://www.gadgets360.com/honor-9s-price-in-india-92110",
+      "view": "front"
+    },
+    "m_11cb24f1a63f": {
+      "model": "Realme C55",
+      "file": "assets/phones/front/realme-c55-front.jpg",
+      "source_url": "https://www.jebinde.com/detay/realme-c55-rmx3710-6gb128gb-gece-bulutu-89206",
+      "view": "front"
+    },
+    "m_a1708840e53a": {
+      "model": "Xiaomi Mi 15T Pro 5G",
+      "file": "assets/phones/front/xiaomi-mi-15t-pro-front.png",
+      "source_url": "https://www.androidplanet.nl/xiaomi/15t-pro/prijzen/256gb/",
+      "view": "front"
+    },
+    "m_3147dc652163": {
+      "model": "Honor X8 4G",
+      "file": "assets/phones/front/honor-x8-4g-front.jpg",
+      "source_url": "https://www.clove-technology.com/products/honor-x8",
+      "view": "front"
     }
   }
 }

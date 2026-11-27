@@ -47,9 +47,12 @@ test('candidate ordering prioritizes Samsung, then Xiaomi, then closeness', () =
     phone('Xiaomi', { 4: 153 }),
     phone('Samsung', { 4: 155 }),
     phone('Samsung', { 4: 150.01 }),
+    phone('Xiaomi', { 4: 150.02 }),
   ];
   const sorted = sortCandidates(models[0], [[1], [2], [3], [0]], models);
   assert.deepEqual(sorted.map(([index]) => index), [3, 2, 1, 0]);
+  assert.deepEqual(sortCandidates(models[2], [[0], [1], [3]], models).map(([index]) => index), [3, 1, 0]);
+  assert.deepEqual(sortCandidates(models[1], [[0], [2], [3], [4]], models).map(([index]) => index), [4, 2, 3, 0]);
 });
 
 test('Samsung model-code search accepts exact and partial codes', () => {

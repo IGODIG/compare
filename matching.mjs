@@ -39,6 +39,8 @@ export function sameDimensions(a, b) {
 
 export function brandRank(model, base = null) {
   if (base?.[0] === 'Apple') return model[0] === 'Apple' ? 0 : model[0] === 'Samsung' ? 1 : model[0] === 'Xiaomi' ? 2 : 3;
+  if (base?.[0] === 'Samsung') return model[0] === 'Samsung' ? 0 : model[0] === 'Xiaomi' ? 1 : 2;
+  if (base?.[0] === 'Xiaomi') return model[0] === 'Xiaomi' ? 0 : model[0] === 'Samsung' ? 1 : 2;
   return model[0] === 'Samsung' ? 0 : model[0] === 'Xiaomi' ? 1 : 2;
 }
 
