@@ -11,6 +11,7 @@ Site-ul este static și se publică prin GitHub Pages: [igodig.github.io/compare
 - **Curbat sau pliabil:** site-ul recomandă folie hydrogel. La modelele pliabile, folia interioară trebuie verificată după recomandarea producătorului.
 - Perechile confirmate din surse și testele salvate se păstrează separat. Voturile de probă se salvează în browserul local.
 - Rezultatele prioritizează Samsung, apoi Xiaomi; în fiecare grup, modelele apropiate după dimensiuni apar primele.
+- Candidatele afișează diferența de lungime și lățime și forma decupajului camerei față de modelul căutat. Favoritele și modelele deschise recent se salvează local în browser.
 
 Detalii: [Regulile de compatibilitate](docs/COMPATIBILITY.md).
 
