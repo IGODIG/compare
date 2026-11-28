@@ -2,7 +2,8 @@
   "schema_version": 1,
   "last_audited_utc": "2026-11-28",
   "sources": [
-    "https://www.orange.md/ro/business/portare",
+    "https://www.orange.md/ro/shop",
+    "https://www.orange.md/ro/shop/catalog/telefoane/toate-telefoanele",
     "https://eshop.moldcell.md/ro/telefoane/smartphone-uri"
   ],
   "candidates": [
@@ -11,10 +12,10 @@
       "brand": "Oppo",
       "name": "A5 4G",
       "source": "Orange Moldova",
-      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_url": "https://www.orange.md/ro/shop",
       "source_name": "OPPO A5 4G 4/128GB",
-      "status": "needs_model_variant_review",
-      "notes": "Model 2025; GSMArena lists 165.7 x 76.2 mm, 6.67in. Must add as distinct from Oppo A5 (2019), A5 Pro, A5 Energy and A5x; confirm screen cutout/front image first.",
+      "status": "needs_eshop_listing_verification",
+      "notes": "Model 2025; GSMArena lists 165.7 x 76.2 mm, 6.67in. Must add as distinct from Oppo A5 (2019), A5 Pro, A5 Energy and A5x; confirm screen cutout/front image first. Official Orange eShop product route has been indexed; verify page resolution and stock before treating as currently available.",
       "specs": {
         "year": 2025,
         "display_in": 6.67,
@@ -23,16 +24,19 @@
         "thickness_mm": 8,
         "camera_cutout": "needs_visual_verification",
         "source_specs": "https://www.gsmarena.com/oppo_a5_4g-13871.php"
-      }
+      },
+      "discovery_source_url": "https://www.orange.md/ro/business/portare",
+      "eshop_catalog_url": "https://www.orange.md/ro/shop",
+      "eshop_product_url": "https://www.orange.md/ro/shop/catalog/telefoane/toate-telefoanele/oppo-a5-4g-4-128gb.html"
     },
     {
       "id": "orange-moto-g05",
       "brand": "Motorola",
       "name": "Moto G05",
       "source": "Orange Moldova",
-      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_url": "https://www.orange.md/ro/shop",
       "source_name": "Motorola Moto G05 4/128GB",
-      "status": "needs_camera_cutout_review",
+      "status": "needs_eshop_listing_verification",
       "notes": "Official Motorola specs: 165.67 x 75.98 mm, 6.67in display. Need front image verification of selfie cutout before active model insertion.",
       "specs": {
         "year": 2025,
@@ -42,16 +46,18 @@
         "thickness_mm": 8.17,
         "camera_cutout": "needs_visual_verification",
         "source_specs": "https://en-emea.support.motorola.com/app/answers/detail/a_id/183975/p/10840"
-      }
+      },
+      "discovery_source_url": "https://www.orange.md/ro/business/portare",
+      "eshop_catalog_url": "https://www.orange.md/ro/shop"
     },
     {
       "id": "orange-moto-g35-5g",
       "brand": "Motorola",
       "name": "Moto G35 5G",
       "source": "Orange Moldova",
-      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_url": "https://www.orange.md/ro/shop",
       "source_name": "Motorola Moto G35 5G 4/128GB",
-      "status": "needs_camera_cutout_review",
+      "status": "needs_eshop_listing_verification",
       "notes": "Official Motorola specs: 166.07 x 75.98 mm, 6.72in display. Need front image verification of selfie cutout before active model insertion.",
       "specs": {
         "year": 2024,
@@ -61,14 +67,16 @@
         "thickness_mm": 7.79,
         "camera_cutout": "needs_visual_verification",
         "source_specs": "https://en-gb.support.motorola.com/app/answers/detail/a_id/184470"
-      }
+      },
+      "discovery_source_url": "https://www.orange.md/ro/business/portare",
+      "eshop_catalog_url": "https://www.orange.md/ro/shop"
     },
     {
       "id": "orange-redmi-15c-4g",
       "brand": "Xiaomi",
       "name": "Redmi 15C 4G",
       "source": "Orange Moldova",
-      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_url": "https://www.orange.md/ro/shop",
       "source_name": "Xiaomi Redmi 15C 4/128GB",
       "status": "already_covered_by_alias",
       "existing_uid": "m_6e890c8c5031",
@@ -80,7 +88,9 @@
         "width_mm": 79.47,
         "thickness_mm": 7.99,
         "source_specs": "https://www.mi.com/ro/product/redmi-15c/specs/"
-      }
+      },
+      "discovery_source_url": "https://www.orange.md/ro/business/portare",
+      "eshop_catalog_url": "https://www.orange.md/ro/shop"
     },
     {
       "id": "moldcell-oppo-reno-16-5g",
