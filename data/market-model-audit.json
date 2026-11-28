@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "last_audited_utc": "2026-11-28",
+  "sources": [
+    "https://www.orange.md/ro/business/portare",
+    "https://eshop.moldcell.md/ro/telefoane/smartphone-uri"
+  ],
+  "candidates": [
+    {
+      "id": "orange-oppo-a5-4g",
+      "brand": "Oppo",
+      "name": "A5 4G",
+      "source": "Orange Moldova",
+      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_name": "OPPO A5 4G 4/128GB",
+      "status": "needs_model_variant_review",
+      "notes": "Model 2025; GSMArena lists 165.7 x 76.2 mm, 6.67in. Must add as distinct from Oppo A5 (2019), A5 Pro, A5 Energy and A5x; confirm screen cutout/front image first.",
+      "specs": {
+        "year": 2025,
+        "display_in": 6.67,
+        "height_mm": 165.7,
+        "width_mm": 76.2,
+        "thickness_mm": 8,
+        "camera_cutout": "needs_visual_verification",
+        "source_specs": "https://www.gsmarena.com/oppo_a5_4g-13871.php"
+      }
+    },
+    {
+      "id": "orange-moto-g05",
+      "brand": "Motorola",
+      "name": "Moto G05",
+      "source": "Orange Moldova",
+      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_name": "Motorola Moto G05 4/128GB",
+      "status": "needs_camera_cutout_review",
+      "notes": "Official Motorola specs: 165.67 x 75.98 mm, 6.67in display. Need front image verification of selfie cutout before active model insertion.",
+      "specs": {
+        "year": 2025,
+        "display_in": 6.67,
+        "height_mm": 165.67,
+        "width_mm": 75.98,
+        "thickness_mm": 8.17,
+        "camera_cutout": "needs_visual_verification",
+        "source_specs": "https://en-emea.support.motorola.com/app/answers/detail/a_id/183975/p/10840"
+      }
+    },
+    {
+      "id": "orange-moto-g35-5g",
+      "brand": "Motorola",
+      "name": "Moto G35 5G",
+      "source": "Orange Moldova",
+      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_name": "Motorola Moto G35 5G 4/128GB",
+      "status": "needs_camera_cutout_review",
+      "notes": "Official Motorola specs: 166.07 x 75.98 mm, 6.72in display. Need front image verification of selfie cutout before active model insertion.",
+      "specs": {
+        "year": 2024,
+        "display_in": 6.72,
+        "height_mm": 166.07,
+        "width_mm": 75.98,
+        "thickness_mm": 7.79,
+        "camera_cutout": "needs_visual_verification",
+        "source_specs": "https://en-gb.support.motorola.com/app/answers/detail/a_id/184470"
+      }
+    },
+    {
+      "id": "orange-redmi-15c-4g",
+      "brand": "Xiaomi",
+      "name": "Redmi 15C 4G",
+      "source": "Orange Moldova",
+      "source_url": "https://www.orange.md/ro/business/portare",
+      "source_name": "Xiaomi Redmi 15C 4/128GB",
+      "status": "already_covered_by_alias",
+      "existing_uid": "m_6e890c8c5031",
+      "notes": "Already included as alias in Poco C85 2025 4G / Redmi 15C 4G entry. Avoid duplicate.",
+      "specs": {
+        "year": 2025,
+        "display_in": 6.9,
+        "height_mm": 171.56,
+        "width_mm": 79.47,
+        "thickness_mm": 7.99,
+        "source_specs": "https://www.mi.com/ro/product/redmi-15c/specs/"
+      }
+    },
+    {
+      "id": "moldcell-oppo-reno-16-5g",
+      "brand": "Oppo",
+      "name": "Reno 16 5G",
+      "source": "Moldcell",
+      "source_url": "https://eshop.moldcell.md/ro",
+      "source_name": "Oppo Reno 16 5G 8GB/512GB",
+      "status": "needs_market_variant_review",
+      "notes": "OPPO regional specs CPH2865 show 151.21 x 72.42 mm, 6.32in; verify that Moldcell SKU matches exact CPH2865 and cutout/front view before insertion.",
+      "specs": {
+        "year": 2026,
+        "display_in": 6.32,
+        "height_mm": 151.21,
+        "width_mm": 72.42,
+        "thickness_mm": 8.22,
+        "camera_cutout": "needs_visual_verification",
+        "source_specs": "https://www.oppo.com/de/smartphones/series-reno/reno16/specs/"
+      }
+    }
+  ]
+}
